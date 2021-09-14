@@ -33,9 +33,11 @@ module.exports = class ClearCommand extends Commando.Command {
             if(args[0] < 1) return message.reply(`${language(guild, 'CLEAR_UNDERLIMIT')}`);
 
             await message.channel.messages.fetch({limit: args[0]}).then(messages =>{
+            
                 //let logg = message.member.guild.channels.cache.find(channel => channel.name === 'logg');
                 //logg.send(`${message.author.username} has cleared  ${args[0]} messages`);
                 message.channel.bulkDelete(messages);
+                
             });
         }
         

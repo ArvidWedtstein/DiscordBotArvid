@@ -9,7 +9,7 @@ const icons = require('../icon/icon')
 const rulesSchema = require('../../schemas/rules-schema')
 const boticons = require('../reaction/boticons'); // boticons(client, 'emojiname)
 const { MessageMenuOption, MessageMenu } = require('discord-buttons');
-const commandStats = require('../../Stats/commandStats')
+const commandStats = require('../../Stats/commandStats');
 module.exports = class InformationCommand extends Commando.Command {
     constructor(client) {
         super(client, {
