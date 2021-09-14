@@ -66,7 +66,7 @@ module.exports = class BanCommand extends Commando.Command {
                     if (logchannel.deleted) return;
                     let logembed = new Discord.MessageEmbed()
                         .setColor(config.botEmbedHex)
-                        .setAuthor(`${message.author.username}`, message.author.username.displayAvatarURL())
+                        .setAuthor(`${message.author.username}`, message.author.displayAvatarURL())
                         .setFooter(`has banned ${targetMember}`, targetMember.displayAvatarURL())
                     logchannel.send({embed: logembed});
                 }

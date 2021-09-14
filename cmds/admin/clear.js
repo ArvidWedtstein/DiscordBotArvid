@@ -49,7 +49,7 @@ module.exports = class ClearCommand extends Commando.Command {
                 if (logchannel.deleted) return;
                 let logembed = new Discord.MessageEmbed()
                     .setColor(config.botEmbedHex)
-                    .setAuthor(`${message.author.username} cleared ${args[0]} messages`, message.author.username.displayAvatarURL())
+                    .setAuthor(`${message.author.username} cleared ${args[0]} messages`, message.author.displayAvatarURL())
                 logchannel.send({embed: logembed});
             }
         }
