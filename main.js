@@ -11,10 +11,10 @@ const fs = require('fs');
 const config = require("./config.json");
 const path = require('path');
 const mongo = require('./mongo');
-const c = require('ansi-colors')
-const economy = require('./economy')
-const messageCountSchema = require('./schemas/message-count-schema')
-const profileSchema = require('./schemas/profileschema')
+const c = require('ansi-colors');
+const economy = require('./economy');
+const messageCountSchema = require('./schemas/message-count-schema');
+const profileSchema = require('./schemas/profileschema');
 
 // Extend EventEmitter
 const EventEmitter = require('events');
