@@ -1,0 +1,51 @@
+{
+    "colors": [
+        "red",
+        "yellow",
+        "green",
+        "blue",
+        "cyan",
+        "orange",
+        "purple",
+        "aqua",
+        "pink",
+        "black",
+        "brown",
+        "lime",
+        "white"
+    ],
+    "fonts": [
+        "Papyrus",
+        "Arial",
+        "Bahnschrift",
+        "Helvetica",
+        "Comicsans",
+        "Impact"
+    ],
+    "texturemaps": [
+        "Normal",
+        "Diffuse",
+        "Specular",
+        "Height",
+        "Displacement",
+        "AmbientOcculusion"
+    ],
+    "carbrands": [
+        "Volkswagen",
+        "Mercedes",
+        "Volvo",
+        "Audi",
+        "Toyota",
+        "Nissan",
+        "Kia",
+        "Porsche",
+        "Ferrari",
+        "Lamborghini",
+        "Bugatti",
+        "Honda",
+        "Ford",
+        "Chevrolet",
+        "Fiat",
+        "Smart"
+    ]
+}
