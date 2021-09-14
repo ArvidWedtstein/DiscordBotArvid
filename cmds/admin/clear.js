@@ -3,7 +3,9 @@ const Discord = require('discord.js');
 const language = require('../language/language')
 const Commando = require('discord.js-commando')
 const commandStats = require('../../Stats/commandStats')
-const settings = require('../features/setting')
+const settings = require('../features/setting');
+const config = require('../../config.json');
+const settingsSchema = require('../../schemas/settings-schema');
 module.exports = class ClearCommand extends Commando.Command {
     constructor(client) {
         super(client, {
@@ -39,6 +41,17 @@ module.exports = class ClearCommand extends Commando.Command {
                 message.channel.bulkDelete(messages);
                 
             });
+            let result = await settingsSchema.findOne({
+                guildId
+            })
+            if (result.serverlog) {
+                const logchannel = guild.channels.cache.find(channel => channel.id === result.serverlog);
+                if (logchannel.deleted) return;
+                let logembed = new Discord.MessageEmbed()
+                    .setColor(config.botEmbedHex)
+                    .setAuthor(`${message.author.username} cleared ${args[0]} messages`, message.author.username.displayAvatarURL())
+                logchannel.send({embed: logembed});
+            }
         }
         
     }

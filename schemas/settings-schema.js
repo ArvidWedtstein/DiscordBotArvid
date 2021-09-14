@@ -41,6 +41,10 @@ const settingsSchema = mongoose.Schema({
     iconcolor: {
         type: String,
         default: "purple"
+    },
+    serverlog: {
+        type: String,
+        required: false
     }
 })
 

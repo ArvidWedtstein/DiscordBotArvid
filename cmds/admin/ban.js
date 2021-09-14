@@ -5,6 +5,8 @@ const settings = require('../features/setting')
 const Commando = require('discord.js-commando');
 const boticons = require('../reaction/boticons')
 const commandStats = require('../../Stats/commandStats')
+const settingsSchema = require('../../schemas/settings-schema');
+const config = require('../../config.json')
 module.exports = class BanCommand extends Commando.Command {
     constructor(client) {
         super(client, {
@@ -56,11 +58,19 @@ module.exports = class BanCommand extends Commando.Command {
                 if (reason.length > 1024) {
                     reason = reason.slice(0, 1021) + '...';
                 }
-                
-                let logg = message.member.guild.channels.cache.find(channel => channel.name === 'logg');
-                if (logg) {
-                    logg.send(`${message.author.username} has banned ${targetMember}`);
-                } 
+                let result = await settingsSchema.findOne({
+                    guildId
+                })
+                if (result.serverlog) {
+                    const logchannel = guild.channels.cache.find(channel => channel.id === result.serverlog);
+                    if (logchannel.deleted) return;
+                    let logembed = new Discord.MessageEmbed()
+                        .setColor(config.botEmbedHex)
+                        .setAuthor(`${message.author.username}`, message.author.username.displayAvatarURL())
+                        .setFooter(`has banned ${targetMember}`, targetMember.displayAvatarURL())
+                    logchannel.send({embed: logembed});
+                }
+
                 
                 if (targetMember.bot) {
                     targetMember.ban({reason: `${reason}`});
