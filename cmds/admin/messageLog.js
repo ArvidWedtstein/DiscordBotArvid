@@ -21,7 +21,7 @@ module.exports = async (client) => {
             if (message.author.bot) {
                 return;
             }
-            const dat = `${d.getDate()} ${d.getMonth()+1} ${d.getFullYear()}` 
+            const dat = `${d.getDate()} ${d.getMonth()+1} ${d.getFullYear()}`; 
             try {
                 // try to read file
                 await fs.promises.readFile(`./logs/MessageLog/messageLog - ${dat}.txt`)

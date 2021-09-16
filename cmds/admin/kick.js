@@ -2,6 +2,8 @@ const fs = require('fs');
 const language = require('../language/language')
 const Commando = require('discord.js-commando')
 const settings = require('../features/setting')
+const Discord = require('discord.js');
+const settingsSchema = require('../../schemas/settings-schema');
 const commandStats = require('../../Stats/commandStats')
 module.exports = class KickCommand extends Commando.Command {
     constructor(client) {
@@ -48,8 +50,19 @@ module.exports = class KickCommand extends Commando.Command {
                 
 
                 const targetMember = message.guild.members.cache.get(target.id);
-                let logg = message.member.guild.channels.cache.find(channel => channel.name === 'logg');
-                logg.send(`${message.author} has kicked ${target.username}`);
+                let result = await settingsSchema.findOne({
+                    guildId
+                })
+                if (result.serverlog) {
+                    const logchannel = guild.channels.cache.find(channel => channel.id === result.serverlog);
+                    if (logchannel.deleted) return;
+                    let logembed = new Discord.MessageEmbed()
+                        .setColor(config.botEmbedHex)
+                        .setAuthor(`${message.author.username}`, message.author.displayAvatarURL())
+                        .setDescription(`kicked\n\n${language(guild, 'BAN_REASON')}: ${reason}`)
+                        .setFooter(`${targetMember}`, targetMember.displayAvatarURL())
+                    logchannel.send({embed: logembed});
+                }
                 targetMember.kick(reason);
             } else {
                 message.channel.send(`${message.author}, ${language(guild, 'USER_NOTFOUND')}`)

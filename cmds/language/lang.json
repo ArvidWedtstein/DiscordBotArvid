@@ -543,9 +543,9 @@
             "norwegian": "du kan ikke slette mindre enn 1 melding"
         },
         "MSGLOG_DOWNLOAD": {
-            "english": "here is message log for",
-            "german": "hier ist der log von",
-            "norwegian": "her er meldingsloggen fra"
+            "english": "message log for",
+            "german": "log von",
+            "norwegian": "meldingsloggen fra"
         },
         "MSGLOG_NOLOGFOUND": {
             "english": "No message log found for",

@@ -4,7 +4,10 @@ const Discord = require('discord.js');
 const language = require('../language/language')
 const settings = require('../features/setting')
 const Commando = require('discord.js-commando')
-const commandStats = require('../../Stats/commandStats')
+const config = require('../../config.json')
+const commandStats = require('../../Stats/commandStats');
+
+
 module.exports = class WarnCommand extends Commando.Command {
     constructor(client) {
         super(client, {
@@ -36,7 +39,7 @@ module.exports = class WarnCommand extends Commando.Command {
             }
             
             args.shift()
-    
+            const { guild } = message
             const guildId = message.guild.id
             const userId = target.id
             const reason = args.join(' ')
@@ -47,23 +50,18 @@ module.exports = class WarnCommand extends Commando.Command {
                 timestamp: new Date().getTime(),
                 reason
             }
-    
-            let embed = new Discord.MessageEmbed()
-                .setColor('ff4300')
-                .setTitle('You just got warned!')
-                .addField('Reason: ', `${reason}`)
-                .addField('Warned by: ', `${message.author}`)
-            let messageEmbed = target.send(embed);
-    
-            //Send warn in logg
-            const logg =  message.member.guild.channels.cache.find(channel => channel.name === 'logg'); //Find Channel named 'logg'
-            if (logg) {
+            let result = await settingsSchema.findOne({
+                guildId
+            })
+            if (result.serverlog) {
+                const logchannel = guild.channels.cache.find(channel => channel.id === result.serverlog);
+                if (logchannel.deleted) return;
                 let embedLogg = new Discord.MessageEmbed() 
-                .setColor('ff4300')
-                .addField('User: ', `${target.username}`)
-                .addField('Reason: ', `${reason}`)
-                .addField('Warned by: ', `${message.author}`)
-                let messageEmbedLogg = logg.send(embedLogg);
+                    .setColor(config.botEmbedHex)
+                    .addField('User: ', `${target.username}`)
+                    .addField(`${language(guild, 'BAN_REASON')}: `, `${reason}`)
+                    .addField('Warned by: ', `${message.author}`)
+                logchannel.send({embed: embedLogg});
             }
             
     
