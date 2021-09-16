@@ -40,7 +40,7 @@ module.exports = class UnBanCommand extends Commando.Command {
         } else if (setting == true) {
             //const memberTarger = message.guild.members.cache.get(member.id);
             let userID = args[0]
-            message.guild.fetchBans().then(bans=> {
+            message.guild.fetchBans().then(async (bans)=> {
                 if(bans.size == 0) return 
                 let bUser = bans.find(b => b.user.id == userID)
                 if(!bUser) return

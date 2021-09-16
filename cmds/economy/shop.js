@@ -84,6 +84,7 @@ module.exports = async (client) => {
             client.on('clickMenu', async (menu) => {
                 if (!menu.clicker.user.bot) {
                     menu.reply.defer();
+                    if (menu.message.channel.id != channelId) return;
                     const guild = guild3
                     const guildId = guild.id;
                     const userId = menu.clicker.user.id;
