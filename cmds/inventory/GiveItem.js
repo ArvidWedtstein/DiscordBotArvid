@@ -5,16 +5,18 @@ const inventory = require('./inventory')
 const language = require('../language/language')
 const Commando = require('discord.js-commando')
 const items = require('./items')
-const commandStats = require('../../Stats/commandStats')
+const commandStats = require('../../Stats/commandStats');
+const temporaryMessage = require('../misc/temporary-message');
+
 module.exports = class RemoveItemCommand extends Commando.Command {
     constructor(client) {
         super(client, {
-            name: 'removeitem',
-	        aliases: ['itemremove'],
+            name: 'giveitem',
+	        aliases: ['itemgive', 'gift', 'give'],
             group: 'inventory',
-            memberName: 'removeitem',
-            description: 'remove an item from your inventory',
-            userPermissions: ['SEND_MESSAGES'],
+            memberName: 'giveitem',
+            description: 'give an item with a user',
+            userPermissions: ['STREAM'],
             argsType: 'multiple',
             clientPermissions: [
                 'SEND_MESSAGES',
@@ -25,25 +27,25 @@ module.exports = class RemoveItemCommand extends Commando.Command {
                 'READ_MESSAGE_HISTORY',
                 'VIEW_CHANNEL'
             ],
-            examples: ['removeitem <itemname> <amount>']
+            examples: ['tradeitem <user> <itemname> <amount>']
         })
     }
 
     async run(message, args) {
         message.delete()
-        const { guild } = message
-        let user = message.guild.member(message.author)
-        if (message.author.hasPermission("ADMINISTRATOR")) {
-            user = message.guild.member(message.mentions.users.first() || message.author)
-            args.shift()
+        const { guild, author } = message
+        const user = message.guild.member(message.mentions.users.first())
+        if (!user) {
+            return temporaryMessage(message.channel, language(guild, 'VALID_USER'));
         }
+        args.shift()
        
         const guildId = message.guild.id
         const userId = user.id
-        commandStats.cmdUse(guildId, 'removeitem')  
+        const { id: authorId } = author;
+        commandStats.cmdUse(guildId, this.memberName);  
         
 
-        //let argsWithoutMentions = args.filter(arg => !Discord.MessageMentions.USERS_PATTERN.test(arg));
         const itemname = args[0].toLowerCase();
         const amount = args[1];
         if (isNaN(amount)) {
@@ -52,14 +54,9 @@ module.exports = class RemoveItemCommand extends Commando.Command {
         }
 
         
-        let icon = '';
-        if (message.attachments.first()) {
-            icon = message.attachments.first().url;
-        } else {
-            icon = ''
-        }
+
         if (itemname in items) {
-            inventory.removeItem(guildId, userId, itemname, items.icon, amount) 
+            inventory.removeItem(guildId, userId, itemname, amount, authorId) 
         } else {
             //message.reply(`The item "${itemname}" does not exist. Use ${items}`);
             message.reply(`${language(guild, 'ADDITEM_NOEXIST')} ${items}`);

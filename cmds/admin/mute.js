@@ -26,7 +26,16 @@ module.exports = class MuteCommand extends Commando.Command {
             guildOnly: true,
             userPermissions: ['MUTE_MEMBERS'],
             clientPermissions: ['ADMINISTRATOR'],
-            argsType: 'multiple'
+            argsType: 'multiple',
+            clientPermissions: [
+                'SEND_MESSAGES',
+                'ADD_REACTIONS',
+                'ATTACH_FILES',
+                'EMBED_LINKS',
+                'MANAGE_MESSAGES',
+                'READ_MESSAGE_HISTORY',
+                'VIEW_CHANNEL'
+            ]
         })
     }
 
@@ -140,7 +149,9 @@ module.exports = class MuteCommand extends Commando.Command {
                 }
             }
             this.client.on('clickMenu', async (menu) => {
+                menu.reply.defer();
                 if (menu.clicker.user.id == message.author.id) {
+                    if (menu.message.id != message.id) return;
                     menuselection(menu)
 
                     const previousMutes = await muteSchema.find({

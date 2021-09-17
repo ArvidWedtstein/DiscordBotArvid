@@ -120,8 +120,7 @@ module.exports.removeItem = async (guildId, userId, itemname, itemicon, amount) 
                 if (!result) {
                     await new inventorySchema({
                         guildId,
-                        userId,
-                        items: item
+                        userId
                     }).save()
                 } 
             }
@@ -166,6 +165,62 @@ module.exports.removeItem = async (guildId, userId, itemname, itemicon, amount) 
                 return
             }*/ 
         return 
+}
+module.exports.giveItem = async (guildId, userId, itemname, amount, authorId) => {
+    //console.log('Running findOneAndUpdate(item)')
+    const item = {
+        name: itemname
+    }
+    // Remove item from senders inventory
+    for (i = 0; i < amount; i++) {
+        const result = await inventorySchema.findOneAndUpdate({
+            guildId,
+            authorId,
+        }, {
+            guildId,
+            authorId,
+            $pull: {
+                items: item
+            }
+        }, {
+            upsert: true,
+        }).catch((err) => {
+            console.log(err)
+        })
+        if (!result) {
+            await new inventorySchema({
+                guildId,
+                authorId
+            }).save()
+        } 
+    }
+
+    // Add item to receivers inventory
+    for (i = 0; i < amount; i++) {
+        const result = await inventorySchema.findOneAndUpdate({
+            guildId,
+            userId,
+        }, {
+            guildId,
+            userId,
+            $push: {
+                items: item
+            }
+        }, {
+            upsert: true,
+        }).catch((err) => {
+            console.log(err)
+        })
+        if (!result) {
+            await new inventorySchema({
+                guildId,
+                userId,
+                items: item
+            }).save()
+        } 
+    }
+    
+return 
 }
 module.exports.getItems = async (guildId, userId) => {
     const cachedValue = itemsCache[`${guildId}-${userId}`]

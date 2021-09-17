@@ -10,9 +10,10 @@ let messagecache = ''
 module.exports = (client) => {
     client.on('message', (message) => {
         const { guild, member } = message
-        if (message.author.bot) {
+        if (message.author.bot || member.bot) {
             return
         }
+        if (message.author.id == '787324889634963486') return;
         
         if (!guild) {
             return;

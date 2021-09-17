@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const language = require('../language/language')
 const settings = require('../features/setting')
 const commandStats = require('../../Stats/commandStats')
+
 const Commando = require('discord.js-commando')
 module.exports = class NicknameCommand extends Commando.Command {
     constructor(client) {
@@ -13,7 +14,17 @@ module.exports = class NicknameCommand extends Commando.Command {
             memberName: 'nickname',
             description: 'nickname a user',
             userPermissions: ['KICK_MEMBERS'],
-            argsType: 'multiple'
+            argsType: 'multiple',
+            clientPermissions: [
+                'SEND_MESSAGES',
+                'ADD_REACTIONS',
+                'ATTACH_FILES',
+                'EMBED_LINKS',
+                'MANAGE_MESSAGES',
+                'READ_MESSAGE_HISTORY',
+                'VIEW_CHANNEL',
+                'MANAGE_NICKNAMES'
+            ],
         })
     }
 
@@ -27,17 +38,18 @@ module.exports = class NicknameCommand extends Commando.Command {
             message.reply(`${language(guild, 'SETTING_OFF')} Moderation ${language(guild, 'SETTING_OFF2')}`);
             return
         } else if (setting == true) {
-            const member = message.mentions.users.first();
-            if(member){
-                
+            const target = message.mentions.users.first();
+            args.shift();
+            if(target){
+                const member = message.guild.members.cache.get(target.id);
                 
                 //message.channel.send(`<@${memberTarger.user.id}> changed nickname to ${args[1]}`);
                 let embed  = new Discord.MessageEmbed()
-                    .setAuthor(`${message.author} nicknamed`, `${message.author.displayAvatarURL()}`)
-                    .setFooter(`${member.username} to ${args[1]}`)
+                    .setAuthor(`${message.author.username} nicknamed`, `${message.author.displayAvatarURL()}`)
+                    .setFooter(`${member.user.username} to ${args.join(' ')}`)
                 message.reply(embed)
-                member.setNickname(args[1]);
-                message.delete()
+                member.setNickname(args.join(' '), 'YES');
+                
             } else {
                 message.reply(`${language(guild, 'VALID_USER')}`);
             }
