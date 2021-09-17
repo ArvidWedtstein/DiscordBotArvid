@@ -33,7 +33,7 @@ module.exports = class RemoveItemCommand extends Commando.Command {
         message.delete()
         const { guild } = message
         let user = message.guild.member(message.author)
-        if (message.author.hasPermission("ADMINISTRATOR")) {
+        if (user.hasPermission("ADMINISTRATOR")) {
             user = message.guild.member(message.mentions.users.first() || message.author)
             args.shift()
         }

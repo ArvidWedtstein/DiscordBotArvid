@@ -12,7 +12,7 @@ module.exports = class RemoveItemCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name: 'giveitem',
-	        aliases: ['itemgive', 'gift', 'give'],
+	        aliases: ['itemgive', 'gift', 'giftitem'],
             group: 'inventory',
             memberName: 'giveitem',
             description: 'give an item with a user',
@@ -36,7 +36,7 @@ module.exports = class RemoveItemCommand extends Commando.Command {
         const { guild, author } = message
         const user = message.guild.member(message.mentions.users.first())
         if (!user) {
-            return temporaryMessage(message.channel, language(guild, 'VALID_USER'));
+            return temporaryMessage(message.channel, language(guild, 'VALID_USER'), 10);
         }
         args.shift()
        
@@ -56,7 +56,7 @@ module.exports = class RemoveItemCommand extends Commando.Command {
         
 
         if (itemname in items) {
-            inventory.removeItem(guildId, userId, itemname, amount, authorId) 
+            inventory.giveItem(guildId, userId, itemname, amount, authorId) 
         } else {
             //message.reply(`The item "${itemname}" does not exist. Use ${items}`);
             message.reply(`${language(guild, 'ADDITEM_NOEXIST')} ${items}`);

@@ -25,14 +25,14 @@ module.exports = class MemeCommand extends Commando.Command {
         const memeFiles = fs.readdirSync('./memes').filter(file => file.endsWith('.png'));
         const number = memeFiles.length + 2
 
+
         const guildId = message.guild.id;
         const userId = message.author.id;
         //level.addXP(guildId, userId, 9, message)
 
-        /*let color = await economy.getColor(guildId, userId);
-        const minus = '➖'
-        const plus = '➕'
-        let embed = new Discord.MessageEmbed()
+        let color = await economy.getColor(guildId, userId);
+        
+        /*let embed = new Discord.MessageEmbed()
             .setColor(color)
             .setTitle(`Meme`)
             .setFooter(`Meme ${page}/${number}`)
@@ -41,7 +41,8 @@ module.exports = class MemeCommand extends Commando.Command {
             console.error(err);
         });
 
-
+        const minus = '➖'
+        const plus = '➕'
         messageEmbed.react(plus);
 
         let memearray = [];
@@ -94,11 +95,11 @@ module.exports = class MemeCommand extends Commando.Command {
         //message.channel.send ({files: ["./memes/" + imageNumber + ".png"]} );
 
         let imageNumber = Math.floor (Math.random() * (number - 1 + 1));
-       
+        
         const attachment = new Discord.MessageAttachment(`./memes/${imageNumber}.png`, `${imageNumber}.png`);
         
         let embed2 = new Discord.MessageEmbed()
-            .setColor('ff4300')
+            .setColor(color)
             .setTitle('Here is your requested meme')
             .attachFiles(attachment)
             .setImage(`attachment://${imageNumber}.png`)

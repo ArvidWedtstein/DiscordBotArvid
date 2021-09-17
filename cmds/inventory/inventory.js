@@ -166,19 +166,22 @@ module.exports.removeItem = async (guildId, userId, itemname, itemicon, amount) 
             }*/ 
         return 
 }
-module.exports.giveItem = async (guildId, userId, itemname, amount, authorId) => {
+module.exports.giveItem = async (guildId, userId2, itemname, amount, authorId) => {
     //console.log('Running findOneAndUpdate(item)')
     const item = {
         name: itemname
     }
+    
     // Remove item from senders inventory
-    for (i = 0; i < amount; i++) {
+    console.log(amount);
+    for (let i = 0; i < amount; i++) {
+        let userId = authorId;
         const result = await inventorySchema.findOneAndUpdate({
             guildId,
-            authorId,
+            userId,
         }, {
             guildId,
-            authorId,
+            userId,
             $pull: {
                 items: item
             }
@@ -190,13 +193,14 @@ module.exports.giveItem = async (guildId, userId, itemname, amount, authorId) =>
         if (!result) {
             await new inventorySchema({
                 guildId,
-                authorId
+                userId
             }).save()
         } 
     }
-
+    
     // Add item to receivers inventory
-    for (i = 0; i < amount; i++) {
+    for (let i = 0; i < amount; i++) {
+        let userId = userId2;
         const result = await inventorySchema.findOneAndUpdate({
             guildId,
             userId,
@@ -211,6 +215,7 @@ module.exports.giveItem = async (guildId, userId, itemname, amount, authorId) =>
         }).catch((err) => {
             console.log(err)
         })
+        console.log(result.items)
         if (!result) {
             await new inventorySchema({
                 guildId,
