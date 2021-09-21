@@ -23,16 +23,17 @@ module.exports = class SetWelcomeCommand extends Commando.Command {
             aliases: ['setleave', 'setleavechannel', 'setwelcomechannel'],
             group: 'joinleave',
             memberName: 'setwelcome',
-            description: 'setwelcome',
+            description: 'greet your new members with a message!',
             userPermissions: ['ADMINISTRATOR'],
-            clientPermissions: ['SEND_MESSAGES', 'MANAGE_MESSAGES']
+            clientPermissions: ['SEND_MESSAGES', 'MANAGE_MESSAGES'],
+            format: "setwelcome <welcometext>"
         })
     }
 
     async run(message, args) {
         message.delete()
         const { guild, channel } = message
-        commandStats.cmdUse(guild.id, 'setwelcome')
+        commandStats.cmdUse(guild.id, this.memberName)
         await welcomeSchema.findOneAndUpdate({
             guildId: guild.id
         }, {

@@ -5,12 +5,12 @@ const Commando = require('discord.js-commando')
 const config = require('../../config.json')
 const tempMsg = require('../misc/temporary-message')
 const boticons = require('../reaction/boticons')
-const commandStats = require('../../Stats/commandStats')
+const commandStats = require('../../Stats/commandStats');
 module.exports = class BotInfoCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name: 'botinfo',
-            aliases: ['info'],
+            aliases: ['memebotinfo', 'info'],
             group: 'stats',
             memberName: 'botinfo',
             description: `Show some information about Meme bot`,
@@ -33,10 +33,17 @@ module.exports = class BotInfoCommand extends Commando.Command {
     async run(message, args) {
         const guildId = message.guild.id;
         commandStats.cmdUse(guildId, `${this.name}`);
-        message.delete();
+        //message.delete();
         const { guild } = message
 
-        
+        let totalSeconds = (this.client.uptime / 1000);
+        let days = Math.floor(totalSeconds / 86400);
+        totalSeconds %= 86400;
+        let hours = Math.floor(totalSeconds / 3600);
+        totalSeconds %= 3600;
+        let minutes = Math.floor(totalSeconds / 60);
+        let txt = days + `day${days === 1 ? '' : 's'}, ${hours} hour${hours === 1 ? '' : 's'}, ${minutes} minute${minutes === 1 ? '' : 's'}`;
+
         const embed = new Discord.MessageEmbed()
             .setTitle(`${this.client.user.username}`)
             .setThumbnail(this.client.user.displayAvatarURL())
@@ -49,12 +56,12 @@ module.exports = class BotInfoCommand extends Commando.Command {
                 },
                 {
                     name: 'Repository',
-                    value: `none`,
+                    value: `${config.repository}`,
                     inline: true
                 },
                 {
                     name: 'Uptime',
-                    value: this.client.uptime.toLocaleString()
+                    value: `${txt}`
                 },
                 {
                     name: 'Prefix',

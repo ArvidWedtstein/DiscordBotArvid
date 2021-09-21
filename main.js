@@ -4,7 +4,6 @@ const { RichPresenceAssets, Util, MessageEmbed } = require('discord.js')
 const { MongoClient } = require('mongodb');
 const MongoDBProvider = require('commando-provider-mongo').MongoDBProvider;
 
-//const { SapphireClient } = require('@sapphire/framework');
 const sqlite = require('sqlite')
 
 const fs = require('fs');
@@ -33,14 +32,6 @@ const client = new Commando.CommandoClient({
     partials: ['MESSAGE', 'CHANNEL', 'REACTION']
 });
 
-/*const client = new SapphireClient({
-    presence: {
-        activity: {
-            name: "YOU",
-            type: "WATCHING"
-        }
-    }
-});*/
 
 // Initialize Discord Buttons - Fjern når discord-commands supporter buttons
 const dbs = require('discord-buttons')
@@ -52,7 +43,7 @@ dbs(client)
 client.setProvider(
     MongoClient.connect(config.remoteMongoPath, {
         useUnifiedTopology: true,
-        useFindAndModify: false
+        //useFindAndModify: false
     })
         .then((client) => {
             return new MongoDBProvider(client, 'MemeBot')
@@ -136,6 +127,7 @@ client.on('ready', async () => {
     welcome(client);
     leave(client);
 
+    clientJoin(client);
 
     //Start Leave/Join Script
     //leave(client, Discord);
@@ -163,7 +155,7 @@ client.on('ready', async () => {
         await shop(client);
         // Check for birthday - Possible reward?
         await birthday(client);
-    }, 3000);
+    }, 2000);
     
 
     // Load Languages
@@ -187,18 +179,19 @@ client.on('ready', async () => {
     // Lottery
     //lottery(client);
 
-    // Slash commands - Emotes
-    //slashcommands(client);
-    const getApp = (guildId) => {
+    /*const getApp = (guildId) => {
         const app = client.api.applications(client.user.id);
         if (guildId) {
             app.guilds(guildId);
         }
+        
+        return app
+    }*/
+    const getApp = async () => {
+        const app = client.api.applications(client.user.id);
+        
         return app
     }
-
-
-
     // Types //
     //SUB_COMMAND	1	
     // SUB_COMMAND_GROUP	2	
@@ -210,8 +203,9 @@ client.on('ready', async () => {
     // ROLE	8	
     // MENTIONABLE	9	Includes users and roles
     // NUMBER	10
+
     const guildId = '524951977243836417'
-    await getApp(guildId).commands.post({
+    /*await getApp().commands.post({
         data: {
             name: 'slap',
             description: 'slap a user',
@@ -239,13 +233,19 @@ client.on('ready', async () => {
             ]
         }
     })
-    await getApp(guildId).commands.post({
+    await getApp().commands.post({
         data: {
             name: 'p',
             description: 'profile',
         }
     })
-    await getApp(guildId).commands.post({
+    await getApp().commands.post({
+        data: {
+            name: "info",
+            description: "Some info about me😐"
+        }
+    })
+    await getApp().commands.post({
         data: {
             name: 'steal',
             description: 'steal a emoji',
@@ -258,17 +258,20 @@ client.on('ready', async () => {
                 }
             ]
         }
-    })
+    })*/
 
+    
     
     /*const commands = await getApp(guildId).commands.get()
     
     console.log(commands)*/
-    client.ws.on('INTERACTION_CREATE', async (interaction) => {
+    /*client.ws.on('INTERACTION_CREATE', async (interaction) => {
         if (interaction.type == 3) return
         const { name, options } = interaction.data;
         const command = name.toLowerCase()
         const guild = client.guilds.cache.get(guildId)
+
+        
 
         const args = {}
         if (options) {
@@ -371,8 +374,7 @@ client.on('ready', async () => {
     
             
             reply(interaction, embed)
-        }
-    })
+        }*/
 
     
     // Check for nitro boosters
@@ -386,11 +388,26 @@ client.on('ready', async () => {
     // Botembedhex alternative: "#49FFE9"
     
     // ARK Raid Alert
-    arkraidalert(client);
+    //arkraidalert(client);
 
+    // Slash-Command Handler
 
+    const baseFile = 'slash-commands.js'
+    const commandBase = require(`./SlashCommands/${baseFile}`)
 
-
+    const readCommands = dir => {
+        const files = fs.readdirSync(path.join(__dirname, dir))
+        for (const file of files) {
+            const stat = fs.lstatSync(path.join(__dirname, dir, file))
+            if (stat.isDirectory()) {
+                readCommands(path.join(dir, file))
+            } else if (file !== baseFile) {
+                const option = require(path.join(__dirname, dir, file))
+                commandBase(client, option);
+            }
+        }
+    }
+    readCommands('SlashCommands');
     // Icon HEX gradient: #FFB712 #FF004A
 
     // Enable / Disable commands
@@ -404,30 +421,7 @@ client.on('ready', async () => {
         }
     })*/
 })
-const reply = async (interaction, response) => {
-    let data = {
-        content: response,
-    }
-    if (typeof response === 'object') {
-        data = await createAPIMessage(interaction, response)
-    }
-    client.api.interactions(interaction.id, interaction.token).callback.post({
-        data: {
-            type: 4,
-            data,
-        }
-    })
-}
 
-const createAPIMessage = async (interaction, content) => {
-    const { data, files } = await Discord.APIMessage.create(
-        client.channels.resolve(interaction.channel_id),
-        content
-    )
-        .resolveData()
-        .resolveFiles()
-    return { ...data, files }
-}
 const levels = require('./levels');
 const commandStats = require('./Stats/commandStats')
 const inventory = require('./cmds/inventory/inventory')
@@ -444,8 +438,7 @@ const memberCounter = require('./Stats/memberCounter');
 const messageCount = require('./Stats/message-counter');
 const welcome = require('./cmds/joinleave/welcome');
 const leave = require('./cmds/joinleave/leave');
-const leaveold = require('./cmds/joinleave/leave-old');
-const joinold = require('./cmds/joinleave/join-old');
+const clientJoin = require('./cmds/joinleave/botjoin')
 const muteCheck = require('./cmds/admin/mutecheck');
 const birthday = require('./cmds/features/birthday');   
 // Role Init
@@ -457,12 +450,13 @@ const checkemoji = require('./cmds/inventory/checkforemoji')
 const antispam = require('./cmds/admin/anti-spam');
 const lottery = require('./cmds/features/lottery')
 const settings = require('./schemas/settings-schema')
-const slashcommands = require('./cmds/features/slash-commands');
 const serverboost = require('./cmds/joinleave/nitrobooster')
 const arkraidalert = require('./events/ArkRaidAlert')
 
 const voiceactivity = require('./Stats/voicechannelLog');
 const { loadColors } = require('./cmds/icon/icon');
+
+
 
 
 

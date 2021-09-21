@@ -14,7 +14,7 @@ module.exports = class InformationCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name: 'information',
-            aliases: ['serverwelcome', 'serverwelcome'],
+            aliases: ['serverwelcome', 'serverinformation', 'welcome'],
             group: 'features',
             memberName: 'information',
             description: 'set server rules',
@@ -29,12 +29,13 @@ module.exports = class InformationCommand extends Commando.Command {
                 'READ_MESSAGE_HISTORY',
                 'VIEW_CHANNEL'
             ],
-            examples: ['info <info message>']
+            examples: ['info']
         })
     }
 
     async run(message, args) {
         message.delete()
+        this.examples = this.memberName
         const { guild, channel } = message
         const guildId = guild.id
         commandStats.cmdUse(guildId, 'information')

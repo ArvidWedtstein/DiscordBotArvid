@@ -1,9 +1,10 @@
 {   
     "clientid": "787324889634963486",
     "owner": "320137922370338818",
+    "repository": "https://github.com/ArvidWedtstein/DiscordBotArvid",
     "invite": "https://discord.gg/mmSExqZWrV",
     "version": "1.6.9",
-    "token": "Nzg3MzI0ODg5NjM0OTYzNDg2.X9TTcQ.tf-Jmjs3bDMhssQotV67pKgIEYk",
+    "token": "Nzg3MzI0ODg5NjM0OTYzNDg2.X9TTcQ.CK6Ito3yrxbi7pBIvDIk4CYVAsc",
     "prefix": "-",
     "mongoPath": "mongodb://localhost:27017/discordbot",
     "remoteMongoPath": "mongodb+srv://Arvid:arviwed0310@memebot.cgesj.mongodb.net/MemeBot?retryWrites=true&w=majority",
