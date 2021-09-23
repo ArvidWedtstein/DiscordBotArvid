@@ -35,7 +35,7 @@ module.exports = class BotInfoCommand extends Commando.Command {
         commandStats.cmdUse(guildId, `${this.name}`);
         //message.delete();
         const { guild } = message
-
+        
         let totalSeconds = (this.client.uptime / 1000);
         let days = Math.floor(totalSeconds / 86400);
         totalSeconds %= 86400;
