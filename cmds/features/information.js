@@ -18,7 +18,7 @@ module.exports = class InformationCommand extends Commando.Command {
             group: 'features',
             memberName: 'information',
             description: 'set server rules',
-            userPermissions: ['ADMINISTRATOR'],
+            userPermissions: ['KICK_MEMBERS'],
             argsType: 'multiple',
             clientPermissions: [
                 'SEND_MESSAGES',
