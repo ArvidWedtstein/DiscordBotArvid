@@ -1,10 +1,9 @@
 const Discord = require('discord.js');
 const Commando = require('discord.js-commando')
-const { RichPresenceAssets, Util, MessageEmbed } = require('discord.js')
 const { MongoClient } = require('mongodb');
 const MongoDBProvider = require('commando-provider-mongo').MongoDBProvider;
+require('dotenv').config();
 
-const sqlite = require('sqlite')
 
 const fs = require('fs');
 const config = require("./config.json");
@@ -26,14 +25,14 @@ const client = new Commando.CommandoClient({
     owner: config.owner,
     commandPrefix: config.prefix,
     restTimeOffset: 0,
-    invite: config.invite,
+    invite: process.env.SUPPORT_SERVER_INVITE,
     disableMentions: 'everyone',
     unknownCommand: true,
     partials: ['MESSAGE', 'CHANNEL', 'REACTION']
 });
 
 
-// Initialize Discord Buttons - Fjern når discord-commands supporter buttons
+// Initialize Discord Buttons - Remove when discord.js supports buttons & menus
 const dbs = require('discord-buttons')
 dbs(client)
 
@@ -41,8 +40,8 @@ dbs(client)
 
 // Database setup
 client.setProvider(
-    MongoClient.connect(config.remoteMongoPath, {
-        useUnifiedTopology: true,
+    MongoClient.connect(process.env.REMOTE_MONGODB, {
+        useUnifiedTopology: true
         //useFindAndModify: false
     })
         .then((client) => {
@@ -59,7 +58,8 @@ module.exports = client;
 
 
 client.on('ready', async () => {
-    console.log(c.red('The Meme Lord is here!'));
+    console.log(c.red('The Meme Lord is here!')+c.greenBright(c.symbols.check));
+
 
     //Set Activity
     client.user.setActivity({
@@ -101,10 +101,10 @@ client.on('ready', async () => {
     await mongo()
 
         
-    //Start anti AD
+    // Start anti AD
     antiAd(client);
     
-    //Start Message Logging
+    // Start Message Logging
     msgLog(client);
 
     // Start Swearfilter
@@ -129,9 +129,6 @@ client.on('ready', async () => {
 
     clientJoin(client);
 
-    //Start Leave/Join Script
-    //leave(client, Discord);
-    //join(client, Discord);
 
 
     // Load levelsystem
@@ -179,14 +176,6 @@ client.on('ready', async () => {
     // Lottery
     //lottery(client);
 
-    /*const getApp = (guildId) => {
-        const app = client.api.applications(client.user.id);
-        if (guildId) {
-            app.guilds(guildId);
-        }
-        
-        return app
-    }*/
     const getApp = async () => {
         const app = client.api.applications(client.user.id);
         
@@ -407,7 +396,7 @@ client.on('ready', async () => {
             }
         }
     }
-    readCommands('SlashCommands');
+    //readCommands('SlashCommands');
     // Icon HEX gradient: #FFB712 #FF004A
 
     // Enable / Disable commands
@@ -428,7 +417,6 @@ const inventory = require('./cmds/inventory/inventory')
 const msgLog = require ("./cmds/admin/messageLog");
 const poll = require("./cmds/misc/poll.js");
 const swearFilter = require("./filters/swearfilter.js");
-const { swearwords } = require("./filters/swearwords.json");
 const autoStaffSwearFilter = require("./filters/autoStaffSwearFilter.js");
 const antiAd = require('./cmds/admin/anti-ad');
 const { loadLanguages } = require('./cmds/language/language.js');
@@ -449,7 +437,6 @@ const shop = require('./cmds/economy/shop')
 const checkemoji = require('./cmds/inventory/checkforemoji')
 const antispam = require('./cmds/admin/anti-spam');
 const lottery = require('./cmds/features/lottery')
-const settings = require('./schemas/settings-schema')
 const serverboost = require('./cmds/joinleave/nitrobooster')
 const arkraidalert = require('./events/ArkRaidAlert')
 
@@ -460,4 +447,4 @@ const { loadColors } = require('./cmds/icon/icon');
 
 
 
-client.login(config.token);
+client.login(process.env.CLIENT_TOKEN);

@@ -10,3 +10,4 @@ handler
 SlashCommands
 memes
 node_modules
+.env
