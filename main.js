@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const Commando = require('discord.js-commando')
 const { MongoClient } = require('mongodb');
 const MongoDBProvider = require('commando-provider-mongo').MongoDBProvider;
-require('dotenv').config();
+
 
 
 const fs = require('fs');
@@ -13,12 +13,13 @@ const c = require('ansi-colors');
 const economy = require('./economy');
 const messageCountSchema = require('./schemas/message-count-schema');
 const profileSchema = require('./schemas/profileschema');
+require('dotenv').config();
 
 // Extend EventEmitter
 const EventEmitter = require('events');
 const emitter = new EventEmitter();
 EventEmitter.defaultMaxListeners = 50
-emitter.setMaxListeners(50)
+emitter.setMaxListeners(50);
 
 // Client Config
 const client = new Commando.CommandoClient({
@@ -36,19 +37,24 @@ const client = new Commando.CommandoClient({
 const dbs = require('discord-buttons')
 dbs(client)
 
-
-
+let lineupper = `╭───────────────────────────╮`;
+let vert = '│'
+let linelower = '╰───────────────────────────╯';
+const initfailed = `${c.white(`Meme Bot Status: ${c.redBright(`Failed ${c.symbols.cross}`)}`)}`;
+const initsuccess = `${c.white(`Meme Bot Status: ${c.greenBright(`Online ${c.symbols.check}`)}`)}`;
 // Database setup
 client.setProvider(
     MongoClient.connect(process.env.REMOTE_MONGODB, {
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
         //useFindAndModify: false
     })
         .then((client) => {
             return new MongoDBProvider(client, 'MemeBot')
         }) 
         .catch((err) => {
+            
             console.error(c.bgBlackBright(c.redBright(err)));
+            console.log(`${lineupper}\n${vert} ${initfailed} ${vert}\n${linelower}`)
     }) 
 )
 
@@ -58,7 +64,11 @@ module.exports = client;
 
 
 client.on('ready', async () => {
-    console.log(c.red('The Meme Lord is here!')+c.greenBright(c.symbols.check));
+    
+    console.log(`${lineupper}\n${vert} ${initsuccess} ${vert}\n${linelower}`)
+
+    
+
 
 
     //Set Activity
@@ -130,7 +140,6 @@ client.on('ready', async () => {
     clientJoin(client);
 
 
-
     // Load levelsystem
     levels(client);
 
@@ -147,9 +156,11 @@ client.on('ready', async () => {
     // OS role claim
     osrole(client);
 
-    // shop
+    
     setTimeout(async () => {
+        // shop
         await shop(client);
+
         // Check for birthday - Possible reward?
         await birthday(client);
     }, 2000);
@@ -384,7 +395,7 @@ client.on('ready', async () => {
     const baseFile = 'slash-commands.js'
     const commandBase = require(`./SlashCommands/${baseFile}`)
 
-    const readCommands = dir => {
+    /*const readCommands = dir => {
         const files = fs.readdirSync(path.join(__dirname, dir))
         for (const file of files) {
             const stat = fs.lstatSync(path.join(__dirname, dir, file))
@@ -395,7 +406,7 @@ client.on('ready', async () => {
                 commandBase(client, option);
             }
         }
-    }
+    }*/
     //readCommands('SlashCommands');
     // Icon HEX gradient: #FFB712 #FF004A
 

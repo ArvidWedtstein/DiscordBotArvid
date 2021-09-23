@@ -1,8 +1,9 @@
-require('dotenv').config();
+
 const mongoose = require('mongoose');
 const c = require('ansi-colors');
 const { password } = require('./config.json')
 //const { mongoPath } = require('./config.json');
+require('dotenv').config();
 const MongoClient = require('mongodb').MongoClient;
 const MongoDBProvider = require('commando-provider-mongo').MongoDBProvider;
 

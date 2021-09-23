@@ -6,6 +6,7 @@
 
 -- Description --
 
+Just another completely normal discordbot
 
 
 
