@@ -44,6 +44,13 @@ module.exports = class BotInfoCommand extends Commando.Command {
         let minutes = Math.floor(totalSeconds / 60);
         let txt = days + `day${days === 1 ? '' : 's'}, ${hours} hour${hours === 1 ? '' : 's'}, ${minutes} minute${minutes === 1 ? '' : 's'}`;
 
+
+        let commands = 0;
+        this.client.registry.groups.forEach((g) => {
+            g.commands.forEach((c) => {
+                commands++;
+            })
+        });
         const embed = new Discord.MessageEmbed()
             .setTitle(`${this.client.user.username}`)
             .setThumbnail(this.client.user.displayAvatarURL())
@@ -52,12 +59,12 @@ module.exports = class BotInfoCommand extends Commando.Command {
             .addFields(
                 {
                     name: 'Creator',
-                    value: this.client.owners
+                    value: this.client.owners,
+                    inline: true
                 },
                 {
                     name: 'Repository',
                     value: `${config.repository}`,
-                    inline: true
                 },
                 {
                     name: 'Uptime',
@@ -65,7 +72,12 @@ module.exports = class BotInfoCommand extends Commando.Command {
                 },
                 {
                     name: 'Prefix',
-                    value: this.client.commandPrefix
+                    value: this.client.commandPrefix,
+                    inline: true
+                },
+                {
+                    name: 'Commands Loaded:',
+                    value: commands
                 }
             )
         message.channel.send(embed);

@@ -39,6 +39,7 @@ dbs(client)
 
 let lineupper = `╭───────────────────────────╮`;
 let vert = '│'
+let linelower2 = '├───────────────────────────┤'
 let linelower = '╰───────────────────────────╯';
 const initfailed = `${c.white(`Meme Bot Status: ${c.redBright(`Failed ${c.symbols.cross}`)}`)}`;
 const initsuccess = `${c.white(`Meme Bot Status: ${c.greenBright(`Online ${c.symbols.check}`)}`)}`;
@@ -54,7 +55,7 @@ client.setProvider(
         .catch((err) => {
             
             console.error(c.bgBlackBright(c.redBright(err)));
-            console.log(`${lineupper}\n${vert} ${initfailed} ${vert}\n${linelower}`)
+            console.log(`${lineupper}\n${vert} ${initfailed} ${vert}\n${linelower2}`)
     }) 
 )
 
@@ -65,7 +66,7 @@ module.exports = client;
 
 client.on('ready', async () => {
     
-    console.log(`${lineupper}\n${vert} ${initsuccess} ${vert}\n${linelower}`)
+    console.log(`${lineupper}\n${vert} ${initsuccess} ${vert}\n${linelower2}`)
 
     
 
@@ -101,13 +102,14 @@ client.on('ready', async () => {
         .registerCommandsIn(path.join(__dirname, 'cmds'));
         
         
-
-    //console.log(client.registry.commands.forEach((e) => console.log(e.description)))    
-    /*console.log(client.registry.groups.forEach((g) => {
-        g.commands.forEach((c) => console.log(c.name))
-        console.log(g.id)
-    }))*/
-
+    let i = 0;
+    client.registry.groups.forEach((g) => {
+        g.commands.forEach((c) => {
+            i++;
+            //console.log(`${vert} ${c.memberName}`)
+        })
+    });
+    console.log(`${vert}  ${c.yellowBright(`Commands Loaded ${c.white('➣')}  ${c.greenBright(i)}`)}   ${vert}\n${linelower}`)
     await mongo()
 
         

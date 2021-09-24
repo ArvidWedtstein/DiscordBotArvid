@@ -31,3 +31,4 @@ In this project i learned how to use node.js, discord.js and javascript.
 - Level System
 - Custom icon colors
 - Dynamic help command with support for discord.js-commando framework
+- Economy System

@@ -32,6 +32,7 @@ module.exports = class HelpCommand extends Commando.Command {
                 'VIEW_CHANNEL'
             ],
             userPermissions: ['SEND_MESSAGES'],
+            examples: ['help <commando>'],
             guarded: true
         })
     
@@ -49,6 +50,7 @@ module.exports = class HelpCommand extends Commando.Command {
         const cmd = []
         const cmddetails = []
         const cmddescription = []
+        const cmdexamples = [];
         const { guild, author } = message
         const guildId = guild.id
         const userId = author.id;
@@ -67,6 +69,9 @@ module.exports = class HelpCommand extends Commando.Command {
                         cmd.push(c.name)
                         cmddescription.push(c.description)
                         cmddetails.push(c.details)
+                        if (c.examples.length > 0) {
+                            cmdexamples.push(c.examples);
+                        }
                     }
                 })
             })
@@ -135,16 +140,15 @@ module.exports = class HelpCommand extends Commando.Command {
             component: Menu,
             embed: embed 
         });
-        async function helpembed (title, description, page, contentname, contentvalue, contentalias) {
+        async function helpembed (title, description, page, contentname, contentvalue, contentalias, contentexample) {
             let embedMain = new Discord.MessageEmbed()
                 .setTitle(`${getEmoji("help")} ${title} - ${capitalizeFirstLetter(description)}`)
                 .setColor(color)
-                
                 .setFooter(`${language(guild, 'HELP_PAGE')} ${page}/${categories.length}`)
             
                 for (let i = 0; i < contentname.length; i++) {
                     //embedMain.addField(contentname[i], contentvalue[i], true)
-                    embedMain.addField('> ' + contentname[i], `${contentvalue[i]}`, true)
+                    embedMain.addField('> ' + contentname[i], `${contentvalue[i]} ${contentexample[i]}`, true)
                 }
                 //embedMain.setDescription(`${cmds}`)
             await messageEmbed.edit(embedMain);
@@ -235,6 +239,7 @@ module.exports = class HelpCommand extends Commando.Command {
                 emptyarray(contentname);
                 emptyarray(contentvalue);
                 emptyarray(contentalias);
+                emptyarray(contentexample);
                 this.client.registry.groups.forEach((e) => {
                     if (e.id === categories[page - 1]) {
                         e.commands.forEach((c) => {
@@ -250,15 +255,17 @@ module.exports = class HelpCommand extends Commando.Command {
                                         contentname.push(c.name)
                                         contentvalue.push(c.description)
                                         contentalias.push(c.aliases)
+                                        contentexample.push(c.examples);
                                     }
                                 }
                             } else {
-                                contentname.push(c.name)
+                                /*contentname.push(c.name)
                                 contentvalue.push(c.description)
                                 contentalias.push(c.aliases)
+                                contentexample.push(c.examples);*/
                             }
                         })
-                        helpembed(language(guild, 'HELP_TITLE'), `${categories[page - 1]}`, page, contentname, contentvalue, contentalias)
+                        helpembed(language(guild, 'HELP_TITLE'), `${categories[page - 1]}`, page, contentname, contentvalue, contentalias, contentexample)
                     }
                 })
             }
@@ -268,6 +275,7 @@ module.exports = class HelpCommand extends Commando.Command {
         let contentname = []
         let contentvalue = []
         let contentalias = []
+        let contentexample = []
         
         this.client.on('messageReactionAdd', async (reaction, user) => {
             if (reaction.message.partial) await reaction.message.fetch();
@@ -295,6 +303,7 @@ module.exports = class HelpCommand extends Commando.Command {
                     emptyarray(contentname);
                     emptyarray(contentvalue);
                     emptyarray(contentalias);
+                    emptyarray(contentexample);
                     let embed2 = new Discord.MessageEmbed()
                         .setColor(color)
                         .setTitle(`${getEmoji("help")} ${emojiCharacters.squareleft}${language(guild, 'HELP_TITLE')}${emojiCharacters.squareright}`)
@@ -312,6 +321,7 @@ module.exports = class HelpCommand extends Commando.Command {
                     emptyarray(contentname);
                     emptyarray(contentvalue);
                     emptyarray(contentalias);
+                    emptyarray(contentexample);
                     this.client.registry.groups.forEach((e) => {
                         if (e.id === categories[page - 1]) {
                             e.commands.forEach((c) => {
@@ -325,11 +335,13 @@ module.exports = class HelpCommand extends Commando.Command {
                                         contentname.push(c.name)
                                         contentvalue.push(c.description)
                                         contentalias.push(c.aliases)
+                                        contentexample.push(c.examples);
                                     }
                                 } else {
-                                    contentname.push(c.name)
+                                    /*contentname.push(c.name)
                                     contentvalue.push(c.description)
                                     contentalias.push(c.aliases)
+                                    contentexample.push(c.examples);*/
                                 }
                             })
                             helpembed(language(guild, 'HELP_TITLE'), `${categories[page - 1]}`, page, contentname, contentvalue, contentalias)

@@ -4,7 +4,8 @@ const language = require('../language/language')
 const Commando = require('discord.js-commando')
 const settings = require('../features/setting')
 const levels = require('../../levels');
-const commandStats = require('../../Stats/commandStats')
+const commandStats = require('../../Stats/commandStats');
+const client = require('../../main');
 module.exports = class CopyRoleCommand extends Commando.Command {
     constructor(client) {
         super(client, {
@@ -78,7 +79,6 @@ module.exports = class CopyRoleCommand extends Commando.Command {
             const copyroleperms = roletocopy.permissions.toArray()
             message.guild.roles.create({ data: { name: rolename, color: '#ff0000', permissions: copyroleperms } });
      
-            
             const role = await message.guild.roles.cache.find(roleval => roleval.name === rolename);
             if (!role) {
                 console.log('no role found')
