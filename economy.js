@@ -4,10 +4,14 @@ const c = require('ansi-colors')
 const coinsCache = {}
 
 module.exports = (client) => {}
-
+let lineupper = `╭───────────────────────────╮`;
+let vert = '│';
+let linelower2 = '├───────────────────────────┤';
+let linelower = '╰───────────────────────────╯';
 module.exports.addCoins = async (guildId, userId, coins) => {
+            
+            console.log(`${vert} Execute findOneAndUpdate(coins)  ${vert}`)
 
-            console.log('Running findOneAndUpdate(coins)')
             
             const result = await profileSchema.findOneAndUpdate({
                 guildId,
@@ -38,7 +42,7 @@ module.exports.addCoins = async (guildId, userId, coins) => {
             return result.coins
 }
 module.exports.setCoins = async (guildId, userId, coins) => {
-            console.log('Settings coins')
+            console.log(`${vert} Execute setCoins(${coins})  ${vert}`)
 
             const result = await profileSchema.findOneAndUpdate({
                 guildId,

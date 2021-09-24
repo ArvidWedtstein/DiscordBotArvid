@@ -4,6 +4,7 @@ const level = require('../../levels')
 const Discord = require('discord.js');
 const config = require('../../config.json')
 const boticons = require('../reaction/boticons')
+const c = require('ansi-colors');
 module.exports = async (client) => {
     const checkForBirthday = async () => {
         const list = client.guilds.cache.get('524951977243836417');
@@ -84,7 +85,11 @@ module.exports = async (client) => {
                         }
                     }); 
                 setTimeout(checkForBirthday, 86400 * 1000 )
-        console.log('Execute CheckForBirthday')
+        let lineupper = `╭───────────────────────────╮`;
+        let vert = '│';
+        let linelower2 = '├───────────────────────────┤';
+        let linelower = '╰───────────────────────────╯';
+        console.log(`${vert} Execute CheckForBirthday  ${vert}`)
     };
     checkForBirthday();
 }

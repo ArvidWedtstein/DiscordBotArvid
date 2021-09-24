@@ -73,23 +73,20 @@ module.exports = class ProfileCommand extends Commando.Command {
             messages = result.messageCount;
         }
         let birthday = '';
-
+        let joinedDate = '';
         const birthdayresult = await profileSchema.findOne({
             userId
         })
         if (!birthdayresult) {
             birthday = 'Unknown'
+            joinedDate = 'Unknown'
         } else if (birthdayresult.birthday == '1/1') {
             birthday = 'Unknown'
         } else {
             birthday = birthdayresult.birthday;
+            joinedDate = birthdayresult.joinedDate;
         }
         
-        let warntxt = `\n\n` 
-        const results = await warnSchema.findOne({
-            guildId,
-            userId
-        })
         if (!results) {
             warntxt += 'No warns'
         } else {    
@@ -143,6 +140,7 @@ module.exports = class ProfileCommand extends Commando.Command {
             .addField("Badges: ", `${txt}`)
             .addField("Game: ", `${presence}`)
             .addField("Warns: ", warntxt)
+            .addField("Has been in this server for: ", joinedDate)
 
         
         

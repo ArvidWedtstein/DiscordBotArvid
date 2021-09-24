@@ -2,6 +2,7 @@ const Canvas = require("canvas")
 const { MessageAttachment } = require('discord.js')
 const path = require('path')
 const { getChannelId } = require('./setwelcome')
+const profileSchema = require('../../schemas/profileschema')
 const language = require('../language/language')
 const settings = require('../features/setting')
 module.exports = (client) => {
@@ -9,6 +10,7 @@ module.exports = (client) => {
         const date1 = Date.now();
         
         const { guild } = member
+        const guildId = guild.id;
         const setting = await settings.settingsguild(guild.id, 'welcome');
         if (setting == false) {
             
@@ -20,12 +22,23 @@ module.exports = (client) => {
             if (!channelId) {
                 return
             }
-
+            const userId = member.user.id;
             const channel = guild.channels.cache.get(channelId);
             if (!channel) {
                 return
             }
-
+            const result = await profileSchema.findOneAndUpdate({
+                guildId,
+                userId
+            }, {
+                guildId,
+                userId,
+                joinedDate: date1
+            }, {
+                upsert: true
+            }).catch((err) => {
+                console.log(c.red(err))
+            })
             //const canvas = Canvas.createCanvas(800, 500)
             const canvas = Canvas.createCanvas(400, 500)
             const ctx = canvas.getContext('2d');

@@ -27,6 +27,10 @@ const profileSchema = mongoose.Schema({
     color: {
         type: String,
         default: '#ff4300'
+    },
+    joinedDate: {
+        type: Date,
+        required: false
     }
 })
 
