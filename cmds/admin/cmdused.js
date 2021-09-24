@@ -6,6 +6,7 @@ const config = require('../../config.json')
 const tempMsg = require('../misc/temporary-message')
 const boticons = require('../reaction/boticons')
 const commandStats = require('../../Stats/commandStats')
+const c = require('ansi-colors');
 module.exports = class CommandUseCommand extends Commando.Command {
     constructor(client) {
         super(client, {
@@ -31,8 +32,12 @@ module.exports = class CommandUseCommand extends Commando.Command {
 
     async run(message, args) {
         const guildId = message.guild.id;
+        let lineupper = `╭───────────────────────────╮`;
+        let vert = '│'
+        let linelower2 = '├───────────────────────────┤'
+        let linelower = '╰───────────────────────────╯';
         const uses = await commandStats.cmdUsages(guildId, args[0])
-        console.log(uses)
+        console.log(`${vert} ${args[0]} cmd uses: ${c.magenta(uses)}         ${vert}`)
         message.reply(`The Command "${args[0]}" has been used ${uses} time${uses === 1 ? '' : 's'} in this server`);
     }
 }

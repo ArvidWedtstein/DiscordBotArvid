@@ -64,7 +64,7 @@ module.exports = class MusicCommand extends Commando.Command {
             const emoji = getEmoji(playemojis[i])
             music[playemojis[i]] = emoji
         }  
-        c
+        
         const guildId = guild.id;
         const userId = author.id;
         
@@ -204,7 +204,7 @@ module.exports = class MusicCommand extends Commando.Command {
             }
         } 
         this.client.on('clickButton', async (btn) => {
-            btn.reply.defer();
+            
             if (btn.id == 'play') {
                 
             } else if (btn.id == 'skip') {
@@ -218,6 +218,7 @@ module.exports = class MusicCommand extends Commando.Command {
             } else if (btn.id == 'loopstop') {
                 loop_off(message, server_queue);
             }
+            btn.reply.defer();
         })
         this.client.on('messageReactionAdd', async (reaction, user) => {
             if (reaction.message.partial) await reaction.message.fetch();
@@ -309,7 +310,7 @@ async function menu(message, music, queue) {
     let embed = new Discord.MessageEmbed()
         .setColor(config.botEmbedHex)
         .setTitle(`${language(guild, 'MUSIC_MENU')}`)
-        .setDescription(queue.songs[0].duration)
+        .setDescription(queue.songs[0].duration.timestamp)
         .setFooter(`${message.author.username}`, `${message.author.displayAvatarURL()}`)
     if (queue) {
         embed.setAuthor(`${language(guild, 'MUSIC_NOWPLAYING')} ${queue.songs[0].title}`, queue.songs[0].img)
@@ -389,12 +390,12 @@ async function video_player(guild, song) {
         });
         
     
-    
     let embed = new Discord.MessageEmbed()
         .setColor(config.botEmbedHex)
         .setTitle(`**${language(guild, 'MUSIC_NOWPLAYING')}**`)
+        .setDescription(`${icons(guild, 'audiowave')}`)
         //.addField(`c`, `**${song.title}** (${song.duration.seconds})`, true)
-        .setFooter(`${icons(guid, 'audiowave')} ${song.title} (${song.duration.seconds})`)
+        .setFooter(`${song.title} (${song.duration.timestamp})`)
         .setThumbnail(song.img)
         .setURL(song.url)
     let messageEmbed = await server_queue.text_channel.send(embed);

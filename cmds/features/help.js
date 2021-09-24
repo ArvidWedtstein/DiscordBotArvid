@@ -147,8 +147,8 @@ module.exports = class HelpCommand extends Commando.Command {
                 .setFooter(`${language(guild, 'HELP_PAGE')} ${page}/${categories.length}`)
             
                 for (let i = 0; i < contentname.length; i++) {
-                    //embedMain.addField(contentname[i], contentvalue[i], true)
-                    embedMain.addField('> ' + contentname[i], `${contentvalue[i]} ${contentexample[i]}`, true)
+                    //embedMain.addField('> ' + contentname[i], `${contentvalue[i]} ${contentexample[i]}`, true)
+                    embedMain.addField('> ' + contentname[i], `${contentvalue[i]}`, true)
                 }
                 //embedMain.setDescription(`${cmds}`)
             await messageEmbed.edit(embedMain);
@@ -216,7 +216,7 @@ module.exports = class HelpCommand extends Commando.Command {
         })*/
 
         this.client.on('clickMenu', async (m) => {
-            m.reply.defer()
+            //m.reply.defer();
             page = m.values[0].toString()
             // console.log(page)
             if (page == '0') {

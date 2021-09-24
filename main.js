@@ -112,9 +112,11 @@ client.on('ready', async () => {
     console.log(`${vert}  ${c.yellowBright(`Commands Loaded ${c.white('➣')}  ${c.greenBright(i)}`)}   ${vert}\n${linelower2}`)
     console.log(`${vert}         ${c.yellow(`Events Log`)}        ${vert}\n${linelower2}`)
     
-    await mongo()
+    
 
-        
+
+    await mongo()
+    
     // Start anti AD
     antiAd(client);
     
