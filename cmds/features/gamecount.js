@@ -7,7 +7,7 @@ const tempMsg = require('../misc/temporary-message')
 const icons = require('../icon/icon')
 const boticons = require('../reaction/boticons')
 const commandStats = require('../../Stats/commandStats')
-const gamenpm = require('../test/gamenpm')
+const gameinvite = require('gameinvite')
 module.exports = class GameCommand extends Commando.Command {
     constructor(client) {
         super(client, {
@@ -40,61 +40,10 @@ module.exports = class GameCommand extends Commando.Command {
         const { guild, channel } = message;
         const guildId = message.guild.id;
         commandStats.cmdUse(guildId, `${this.name}`);
-
-
-        gamenpm.create_game(message, 'SCP: SECRET LABORATORY', '<:yes:807175712515162183>', 10000, "ff0000")
-        /*const game = args.join(' ');
-        let i = 0;
-        let embed = new Discord.MessageEmbed()
-            .setAuthor(message.author.username, message.author.displayAvatarURL())
-            .setDescription(`${game}\n\nCurrent Members: ${i}\n\nPress ${icons(guild, 'checkmark')} if you want to join`)
-            .setTimestamp()
-        let messageEmbed = await message.channel.send(embed)
-        messageEmbed.react(getEmoji('checkmark'))
-        let membersjoined = []
-        this.client.on('messageReactionAdd', async (reaction, user) => {
-            if (reaction.message.partial) await reaction.message.fetch();
-            if (reaction.partial) await reaction.fetch();
-            if (user.bot) return;
-            if (!reaction.message.guild) return;
-
-            if (reaction.message.channel.id == channel.id) {
-                i++;
-                
-                const member = guild.members.cache.get(user.id)
-                membersjoined.push(member.user.username)
-                let embed2 = new Discord.MessageEmbed()
-                    .setAuthor(message.author.username, message.author.displayAvatarURL())
-                    .setDescription(`${game}\n\nCurrent Members: ${i}\n\nPress ${icons(guild, 'checkmark')} if you want to join`)
-                for (let x = 0; x < membersjoined.length; x++) {
-                    embed2.addField(membersjoined[x], '👍', true)
-                }
-
-                messageEmbed = await messageEmbed.edit(embed2);
-            } else {
-                return;
-            }
-        });
-        this.client.on('messageReactionRemove', async (reaction, user) => {
-            if (reaction.message.partial) await reaction.message.fetch();
-            if (reaction.partial) await reaction.fetch();
-            if (user.bot) return;
-            if (!reaction.message.guild) return;
-
-            if (reaction.message.channel.id == channel.id) {
-                i--;
-                const member = guild.members.cache.get(user.id)
-                membersjoined = membersjoined.filter(item => item !== member.user.username)
-                let embed3 = new Discord.MessageEmbed()
-                    .setAuthor(message.author.username, message.author.displayAvatarURL())
-                    .setDescription(`${game}\n\nCurrent Members: ${i}\n\nPress ${icons(guild, 'checkmark')} if you want to join`)
-                for (let x = 0; x < membersjoined.length; x++) {
-                    embed3.addField(membersjoined[x], '👍', true)
-                }
-                messageEmbed = await messageEmbed.edit(embed3);
-            } else {
-                return;
-            }
-        });*/
+        const emoji = args[0];
+        args.shift();
+        const game = args.join(' ');
+        gameinvite.create_game(message, emoji, game, "ff0000")
+        
     }
 }

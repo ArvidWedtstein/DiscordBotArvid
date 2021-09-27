@@ -106,11 +106,11 @@ module.exports = class HelpCommand extends Commando.Command {
         const categories = categorie.filter(item => !remove.includes(item)).sort()
         //const getEmoji = emojiName => this.client.emojis.cache.find((emoji) => emoji.id === emojiName)
         const options = []
-        let role2 = new MessageMenuOption()
+        let catoption = new MessageMenuOption()
             .setLabel('Home')
             .setValue(0)
             .setDescription(`Overview over the categories`)
-        options.push(role2)
+        options.push(catoption)
         let embed = new Discord.MessageEmbed()
             .setColor(color)
             .setTitle(`${getEmoji("help")} ${emojiCharacters.squareleft}${language(guild, 'HELP_TITLE')}${emojiCharacters.squareright}`)
