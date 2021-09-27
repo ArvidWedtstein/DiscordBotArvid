@@ -7,6 +7,7 @@ const tempMsg = require('../misc/temporary-message')
 const icons = require('../icon/icon')
 const boticons = require('../reaction/boticons')
 const commandStats = require('../../Stats/commandStats')
+const gamenpm = require('../test/gamenpm')
 module.exports = class GameCommand extends Commando.Command {
     constructor(client) {
         super(client, {
@@ -39,7 +40,10 @@ module.exports = class GameCommand extends Commando.Command {
         const { guild, channel } = message;
         const guildId = message.guild.id;
         commandStats.cmdUse(guildId, `${this.name}`);
-        const game = args.join(' ');
+
+
+        gamenpm.create_game(message, 'SCP: SECRET LABORATORY', '<:yes:807175712515162183>', 10000, "ff0000")
+        /*const game = args.join(' ');
         let i = 0;
         let embed = new Discord.MessageEmbed()
             .setAuthor(message.author.username, message.author.displayAvatarURL())
@@ -80,7 +84,7 @@ module.exports = class GameCommand extends Commando.Command {
             if (reaction.message.channel.id == channel.id) {
                 i--;
                 const member = guild.members.cache.get(user.id)
-                membersjoined = items.filter(item => item !== member.user.username)
+                membersjoined = membersjoined.filter(item => item !== member.user.username)
                 let embed3 = new Discord.MessageEmbed()
                     .setAuthor(message.author.username, message.author.displayAvatarURL())
                     .setDescription(`${game}\n\nCurrent Members: ${i}\n\nPress ${icons(guild, 'checkmark')} if you want to join`)
@@ -91,6 +95,6 @@ module.exports = class GameCommand extends Commando.Command {
             } else {
                 return;
             }
-        });
+        });*/
     }
 }
