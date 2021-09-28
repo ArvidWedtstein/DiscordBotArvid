@@ -2,17 +2,11 @@ const Discord = require('discord.js');
 const Commando = require('discord.js-commando')
 const { MongoClient } = require('mongodb');
 const MongoDBProvider = require('commando-provider-mongo').MongoDBProvider;
-
-
-
 const fs = require('fs');
 const config = require("./config.json");
 const path = require('path');
 const mongo = require('./mongo');
 const c = require('ansi-colors');
-const economy = require('./economy');
-const messageCountSchema = require('./schemas/message-count-schema');
-const profileSchema = require('./schemas/profileschema');
 require('dotenv').config();
 
 // Extend EventEmitter
@@ -67,10 +61,6 @@ module.exports = client;
 client.on('ready', async () => {
     
     console.log(`${lineupper}\n${vert} ${initsuccess} ${vert}\n${linelower2}`)
-
-    
-
-
 
     //Set Activity
     client.user.setActivity({
@@ -189,6 +179,8 @@ client.on('ready', async () => {
     // Check What Users are playing
     //checkUserActivity(client)
 
+    // Check current schoolclass
+    timesystem(client);
 
     // Lottery
     //lottery(client);
@@ -266,7 +258,7 @@ const antispam = require('./cmds/admin/anti-spam');
 const lottery = require('./cmds/features/lottery')
 const serverboost = require('./cmds/joinleave/nitrobooster')
 const arkraidalert = require('./events/ArkRaidAlert')
-
+const timesystem = require('./Stats/currentTime');
 const voiceactivity = require('./Stats/voicechannelLog');
 const { loadColors } = require('./cmds/icon/icon');
 

@@ -43,7 +43,7 @@ module.exports = class TimePlanCommand extends Commando.Command {
             ].join('/');
             return dformat
         }
-        
+    
         const monthdays = {
             1: '31',
             2: '28',
@@ -74,20 +74,12 @@ module.exports = class TimePlanCommand extends Commando.Command {
                 monthtxt += '\n'
             }
         }
-
+        
 
         
-        //message.channel.send(monthtxt)
-        function suffixes(number) {
-            const converted = number.toString();
 
-            const lastChar = converted.charAt(converted.length - 1);
+        
 
-            return lastChar == "1" ? 
-            `${converted}st` : lastChar == "2" ?
-            `${converted}nd` : lastChar == '3' ?
-             `${converted}rd` : `${converted}th`
-        }
         const toggle = new MessageButton()
             .setLabel(`${language(guild, 'TIMEPLAN_SWITCH')}`)
             .setStyle(3)
