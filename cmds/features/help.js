@@ -11,6 +11,7 @@ const icons = require('../icon/icon')
 const commandStats = require('../../Stats/commandStats');
 const emojiCharacters = require('../reaction/emojiCharacters');
 const boticons = require('../reaction/boticons');
+const { help, get_commands } = require('discord.js-commando-help');
 module.exports = class HelpCommand extends Commando.Command {
     constructor(client) {
         super(client, {
@@ -152,13 +153,9 @@ module.exports = class HelpCommand extends Commando.Command {
                 }
                 //embedMain.setDescription(`${cmds}`)
             await messageEmbed.edit(embedMain);
-            /*return await messageEmbed.edit({
-                buttons: [prev, next],
-                embed: embedMain
-            });*/
         }
         let page = 0;
-        /*this.client.on('clickButton', async (btn) => {
+        this.client.on('clickButton', async (btn) => {
             if (btn.id == 1) {
                 if (page == 0) {     
                     page = categories.length
@@ -197,7 +194,6 @@ module.exports = class HelpCommand extends Commando.Command {
                                 return;
                             }
                             if (c.userPermissions) {
-                                //console.log(message.member.user.username, requiredperms, message.member.permissions.has(requiredperms))
                                 if (message.member.permissions.has(requiredperms)) {
                                     contentname.push(c.name)
                                     contentvalue.push(c.description)
@@ -213,7 +209,7 @@ module.exports = class HelpCommand extends Commando.Command {
                     }
                 })
             }
-        })*/
+        })
 
         this.client.on('clickMenu', async (m) => {
             //m.reply.defer();
@@ -258,11 +254,6 @@ module.exports = class HelpCommand extends Commando.Command {
                                         contentexample.push(c.examples);
                                     }
                                 }
-                            } else {
-                                /*contentname.push(c.name)
-                                contentvalue.push(c.description)
-                                contentalias.push(c.aliases)
-                                contentexample.push(c.examples);*/
                             }
                         })
                         helpembed(language(guild, 'HELP_TITLE'), `${categories[page - 1]}`, page, contentname, contentvalue, contentalias, contentexample)
@@ -337,11 +328,6 @@ module.exports = class HelpCommand extends Commando.Command {
                                         contentalias.push(c.aliases)
                                         contentexample.push(c.examples);
                                     }
-                                } else {
-                                    /*contentname.push(c.name)
-                                    contentvalue.push(c.description)
-                                    contentalias.push(c.aliases)
-                                    contentexample.push(c.examples);*/
                                 }
                             })
                             helpembed(language(guild, 'HELP_TITLE'), `${categories[page - 1]}`, page, contentname, contentvalue, contentalias)

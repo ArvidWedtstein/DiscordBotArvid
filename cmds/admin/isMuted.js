@@ -57,7 +57,7 @@ module.exports = class IsMutedCommand extends Commando.Command {
     
                 embed
                     .addField(`Mute ${language(guild, 'MUTE_BY')}`, `<@${currentMute.staffId}>`)
-                    .addField(`${language(guild, 'MUTE_REASON')}`, currentMute.reason.toLowerCase())
+                    .addField(`${language(guild, 'BAN_REASON')}`, currentMute.reason.toLowerCase())
                     .addField(`${language(guild, 'MUTE_EXPIRE')}`, `${date.toLocaleString()} EST`)
             }
             message.reply(embed)

@@ -480,352 +480,380 @@
         "MEME_SUBMISSION": {
             "english": "Thank you for your meme submission",
             "german": "Vielen dank für ihre meme Einreichung",
-            "norwegian": "Tusen takk for din meme innsending"
+            "norwegian": "Tusen takk for din meme innsending",
+            "french": "Merci pour votre soumission de mème"
         },
         "EMOJI_STEAL": {
             "english": "Please specify some emojis",
             "german": "Bitte geben Sie emojis an",
-            "norwegian": "Vennligst oppgi noen emojier"
-        },
-        "CALCULATOR_ARG0": {
-            "english": "please specify a number",
-            "german": "bitte geben Sie eine nummer ein",
-            "norwegian": "vennligst oppgi et nummer"
-        },
-        "CALCULATOR_ARG1": {
-            "english": "please specify an operator",
-            "german": "bitte geben Sie einen Operator an",
-            "norwegian": "vennligst spesifiser en operatør"
-        },
-        "CALCULATOR_ARG2": {
-            "english": "please specify a second number",
-            "german": "bitte geben Sie eine zweite nummer ein",
-            "norwegian": "vennligst oppgi det andre nummeret"
-        },
-        "CALCULATOR_TITLE": {
-            "english": "Calculator",
-            "german": "Taschenrechner",
-            "norwegian": "Kalkulator"
+            "norwegian": "Vennligst oppgi noen emojier",
+            "french": "Veuillez spécifier des emojis"
         },
         "NEWS_CHANNELNAME": {
             "english": "News",
             "german": "Nachrichten",
-            "norwegian": "Nyheter"
+            "norwegian": "Nyheter",
+            "french": "Nouvelles"
         },
         "BAN_TITLE": {
             "english": "You just got banned from",
             "german": "Sie wurden gebannt von",
-            "norwegian": "Du ble bannet fra"
+            "norwegian": "Du ble bannet fra",
+            "french": "Vous venez d'être banni de"
         },
         "BAN_REASON": {
             "english": "Reason",
             "german": "Grund",
-            "norwegian": "Grunn"
+            "norwegian": "Grunn",
+            "french": "Raison"
         },
         "CLEAR_AMOUNT": {
             "english": "please enter the amount of messages",
             "german": "bitte geben Sie eine anzahl ein",
-            "norwegian": "vennligst oppgi antall meldinger"
+            "norwegian": "vennligst oppgi antall meldinger",
+            "french": "veuillez saisir le nombre de messages"
         },
         "CLEAR_NaN": {
             "english": "please enter a real number",
             "german": "bitte geben Sie eine zahl ein",
-            "norwegian": "vennligst oppgi et tall"
+            "norwegian": "vennligst oppgi et tall",
+            "french": "veuillez entrer un nombre réel"
         },
         "CLEAR_LIMIT": {
             "english": "you cannot delete more than 100 messages",
             "german": "sie können nicht mehr als 100 meldungen löschen",
-            "norwegian": "du kan ikke slette mer enn 100 meldinger"
+            "norwegian": "du kan ikke slette mer enn 100 meldinger",
+            "french": "vous ne pouvez pas supprimer plus de 100 messages"
         },
         "CLEAR_UNDERLIMIT": {
             "english": "you must delete atleast one message",
             "german": "Sie können nicht weniger als 1 meldung löschen",
-            "norwegian": "du kan ikke slette mindre enn 1 melding"
+            "norwegian": "du kan ikke slette mindre enn 1 melding",
+            "french": "vous devez supprimer au moins un message"
         },
         "MSGLOG_DOWNLOAD": {
             "english": "message log for",
             "german": "log von",
-            "norwegian": "meldingsloggen fra"
+            "norwegian": "meldingsloggen fra",
+            "french": "journal des messages pour"
         },
         "MSGLOG_NOLOGFOUND": {
             "english": "No message log found for",
             "german": "keinen log gefunden von",
-            "norwegian": "fant ingen logg fra"
+            "norwegian": "fant ingen logg fra",
+            "french": "Aucun journal des messages trouvé pour"
         },
         "MUTE_INFO": {
             "english": "Mute info for",
             "german": "Mute info für",
-            "norwegian": "Mute info for"
+            "norwegian": "Mute info for",
+            "french": "Désactiver les informations pour"
         },
         "MUTE_CURRENT": {
             "english": "Currently muted",
             "german": "Zur zeit gemuted",
-            "norwegian": "Muted for tiden"
+            "norwegian": "Muted for tiden",
+            "french": "Actuellement coupé"
         },
         "MUTE_INDISCORD": {
             "english": "Is in Discord",
             "german": "Ist in Discord",
-            "norwegian": "Er i Discord"
+            "norwegian": "Er i Discord",
+            "french": "est en discorde"
         },
         "MUTE_BY": {
             "english": "by",
             "german": "von",
-            "norwegian": "av"
-        },
-        "MUTE_REASON": {
-            "english": "Muted for",
-            "german": "Mutet wegen",
-            "norwegian": "Mute på grunn av"
+            "norwegian": "av",
+            "french": "par"
         },
         "MUTE_EXPIRE": {
             "english": "Mute expires",
             "german": "Mute läuft aus",
-            "norwegian": "Mute utgår"
+            "norwegian": "Mute utgår",
+            "french": "La sourdine expire"
         },
         "WARN_PREVIOUS": {
             "english": "Previous warns for",
             "german": "Zeitigere warns von",
-            "norwegian": "Tidligere anmerkninger av"
+            "norwegian": "Tidligere anmerkninger av",
+            "french": "Un précédent met en garde pour"
         },
         "MUTE_DURATION": {
             "english": "Duration",
             "german": "Dauer",
-            "norwegian": "Lenge"
+            "norwegian": "Lenge",
+            "french": "Durée"
         },
         "MUTE_TITLE": {
             "english": "has been muted",
             "german": "wurde gemutet",
-            "norwegian": "ble mutet"
+            "norwegian": "ble mutet",
+            "french": "a été mis en sourdine"
         },
         "MUTE_USERMUTED": {
             "english": "That user is already muted",
             "german": "Dieser benutzer ist schon gemutet",
-            "norwegian": "Denne brukeren er allerede mutet"
+            "norwegian": "Denne brukeren er allerede mutet",
+            "french": "Cet utilisateur est déjà coupé"
         },
         "MUTE_NOT": {
             "english": "That user is not muted",
             "german": "Dieser benutzer ist nicht gemutet",
-            "norwegian": "Denne brukeren er ikke mutet"
+            "norwegian": "Denne brukeren er ikke mutet",
+            "french": "Cet utilisateur n'est pas mis en sourdine"
         },
         "MUTE_UNKNOWNREASON": {
             "english": "Unknown reason, please use one of the following",
             "german": "Unbekannter grund, bitte benutze eine von diesen",
-            "norwegian": "Ukjent grunn, vennligst bruk en av disse"
+            "norwegian": "Ukjent grunn, vennligst bruk en av disse",
+            "french": "Raison inconnue, veuillez utiliser l'un des éléments suivants"
         },
         "BAN_UNBAN": {
             "english": "got unbanned by",
             "german": "wurde ungebannt von",
-            "norwegian": "ble unbannet av"
+            "norwegian": "ble unbannet av",
+            "french": "a été autorisé par"
         },
         "WARN_TITLE": {
             "english": "You just got warned",
             "german": "Sie haben eine ermahnung erhalten",
-            "norwegian": "Du fikk warn"
+            "norwegian": "Du fikk warn",
+            "french": "tu viens d'être prévenu"
         },
         "PAY_ACCEPT": {
             "english": "Accepted",
             "german": "Akseptiert",
-            "norwegian": "Akseptert"
+            "norwegian": "Akseptert",
+            "french": "Accepté"
         },
         "PAY_DENIED": {
             "english": "Denied",
             "german": "Abgelehnt",
-            "norwegian": "Avslått"
+            "norwegian": "Avslått",
+            "french": "Refusée"
         },
         "BIRTHDAY_DAY": {
             "english": "Please enter a day",
             "german": "Bitte geben sie einen tag ein",
-            "norwegian": "Vennglist oppgi en dag"
+            "norwegian": "Vennglist oppgi en dag",
+            "french": "Veuillez saisir un jour"
         },
         "BIRTHDAY_MONTH": {
             "english": "Please enter a month",
             "german": "Bitte geben Sie einen monat ein",
-            "norwegian": "Vennligst oppgi en dag"
+            "norwegian": "Vennligst oppgi en dag",
+            "french": "Veuillez saisir un mois"
         },
         "BIRTHDAY_NaN": {
             "english": "The date you entered is not a number",
             "german": "Das datum ist keine gültige Zahl",
-            "norwegian": "Datoen du oppga er ikke er gyldig tall"
+            "norwegian": "Datoen du oppga er ikke er gyldig tall",
+            "french": "La date que vous avez saisie n'est pas un nombre"
         },
         "BIRTHDAY_FORMAT": {
             "english": "Wrong format",
             "german": "Falsches format",
-            "norwegian": "Feil format"
+            "norwegian": "Feil format",
+            "french": "Mauvais format"
         },
         "BIRTHDAY_ADD": {
             "english": "Added your birthday to your profile",
             "german": "Ihr geburtstag wurde zu ihrem profil hinzugefügt",
-            "norwegian": "Din bursdag ble lagt til din profil"
+            "norwegian": "Din bursdag ble lagt til din profil",
+            "french": "Ajout de votre anniversaire à votre profil"
         },
         "BIRTHDAY_CHANGE": {
             "english": "birthday changed to",
             "german": "geburtsdag wurde geändert zu",
-            "norwegian": "bursdag ble endret til"
+            "norwegian": "bursdag ble endret til",
+            "french": "Anniversaire changé en"
         },
         "CHANNEL": {
             "english": "Please specify a channel",
             "german": "Bitte geben sie einen channel an",
-            "norwegian": "Vennligst oppgi en kanal"
+            "norwegian": "Vennligst oppgi en kanal",
+            "french": "Veuillez spécifier une chaîne"
         },
         "JSON_INVALID": {
             "english": "Invalid JSON",
             "german": "Ungültiges JSON format",
-            "norwegian": "Ugyldig JSON"
+            "norwegian": "Ugyldig JSON",
+            "french": "JSON non valide"
         },
         "SETTINGS_DESC": {
             "english": "React to the emojis to switch page",
             "german": "Drücke auf eins der emojis um seite zu wehseln",
-            "norwegian": "Trykk på ett av emojiene for å bytte side"
+            "norwegian": "Trykk på ett av emojiene for å bytte side",
+            "french": "Réagissez aux emojis pour changer de page"
         },
         "SETTINGS_REACT": {
             "english": "React to the emojis to turn off or on the",
             "german": "Drücke auf eins der emojis um an oder aus zu schalten das",
-            "norwegian": "Trykk på et av emojiene for å skru av eller på"
+            "norwegian": "Trykk på et av emojiene for å skru av eller på",
+            "french": "Réagissez aux emojis pour éteindre ou allumer le"
         },
         "COLOR_USER": {
             "english": "Changed color to",
             "german": "Ihre Farbe wurde geändert zu",
-            "norwegian": "Fargen din ble endret til"
+            "norwegian": "Fargen din ble endret til",
+            "french": "Couleur changée en"
         },
         "COLOR_INVALID": {
-            "english": "Invalid hex. Try '#FF0000#' or a different HEX code",
+            "english": "Invalid hex. Try '#FF0000' or a different HEX code",
             "german": "Ungültiger HEX. Versuche mit '#FF0000' oder einem anderen HEX code",
-            "norwegian": "Ugyldig HEX. Prøv med '#FF0000' eller en annen HEX code"
+            "norwegian": "Ugyldig HEX. Prøv med '#FF0000' eller en annen HEX code",
+            "french": "Hex non valide. Essayez '#FF0000' ou un autre code HEX"
         },
         "RPS_TITLE": {
             "english": "Rock, Paper or Scissors",
             "german": "Stein, Schere oder Papier",
-            "norwegian": "Stein, Saks eller Papir"
+            "norwegian": "Stein, Saks eller Papir",
+            "french": "Pierre, papier ou ciseaux"
         },
         "RPS_WIN": {
             "english": "You won",
             "german": "Sie haben gewonnen",
-            "norwegian": "Du vant"
+            "norwegian": "Du vant",
+            "french": "tu as gagné"
         },
         "RPS_TIE": {
             "english": "It's a tie",
             "german": "Unendschieden",
-            "norwegian": "Uavgjort"
+            "norwegian": "Uavgjort",
+            "french": "C'est une cravate"
         },
         "RPS_LOOSE": {
             "english": "You lost",
             "german": "Sie haben verloren",
-            "norwegian": "Du tapte"
+            "norwegian": "Du tapte",
+            "french": "Tu as perdu"
         },
         "ADDITEM_NOEXIST": {
-            "english": "That item does not exist. Use",
+            "english": "That item does not exist. Try",
             "german": "Dieses item existiert nicht. Probiere",
-            "norwegian": "Dette itemet eksisterer ikke. Prøv"
+            "norwegian": "Dette itemet eksisterer ikke. Prøv",
+            "french": "Cet élément n'existe pas. Essayer"
         },
         "GIFFLAR_NOPERM": {
-            "english": "You do not have permission to use the holy gifflar emoji",
+            "english": "You do not have permission to use this emoji",
             "german": "Sie haben keine erlaubnis dieses emoji zu nutzen",
-            "norwegian": "Du har ikke tilgang til å bruke denne emojien"
+            "norwegian": "Du har ikke tilgang til å bruke denne emojien",
+            "french": "Vous n'êtes pas autorisé à utiliser cet emoji"
         },
         "VOICE_CHANNEL": {
             "english": "You need to be in a voice channel to use this command",
             "german": "Sie mussen in einen voice channel sein um diesen befehl zu nutzen",
-            "norwegian": "Du må være i en voice channel for å kunne bruke denne kommandoen"
+            "norwegian": "Du må være i en voice channel for å kunne bruke denne kommandoen",
+            "french": "Vous devez être dans un canal vocal pour utiliser cette commande"
         },
         "EMOTE_SYSTEM": {
             "english": "The emote system contains many funny emotes",
             "german": "Das emote system enthält viele lustige emotes",
-            "norwegian": "Emote systemet inneholder mange gøyale emotes"
+            "norwegian": "Emote systemet inneholder mange gøyale emotes",
+            "french": "Le système d'émoticônes contient de nombreuses émoticônes amusantes"
         },
         "ECONOMY_SYSTEM": {
             "english": "The economy system can be used to buy emotes and trade money",
             "german": "Das economy system enthält verschiedene geld funktionen",
-            "norwegian": "Økonomi systemet inneholder diverse penge kommandoer"
+            "norwegian": "Økonomi systemet inneholder diverse penge kommandoer",
+            "french": "Le système économique peut être utilisé pour acheter des emotes et échanger de l'argent"
         },
         "SWEARFILTER_SYSTEM": {
             "english": "The swearfilter system automatically blocks bad words",
             "german": "Das swearfilter system blokkiert automatisch schimpfwörter raus",
-            "norwegian": "Swearfilter systemet blokkerer automatisk upassende ord"
+            "norwegian": "Swearfilter systemet blokkerer automatisk upassende ord",
+            "french": "Le système de swearfilter bloque automatiquement les gros mots"
         },
         "TICKET_SYSTEM": {
             "english": "The ticket system can be used to get help",
             "german": "Das ticket system kann benutzt werden um hilfe zu kriegen",
-            "norwegian": "Ticket systemet kan brukes til å rapportere bugs og til å få hjelp"
+            "norwegian": "Ticket systemet kan brukes til å rapportere bugs og til å få hjelp",
+            "french": "Le système de ticket peut être utilisé pour obtenir de l'aide"
         },
         "MODERATION_SYSTEM": {
             "english": "The Moderation system contains basic moderation commands such as: ban, kick, warn, mute, nick, clearmessages",
             "german": "Das emoderations system enthält grundlegende commandos wie: ban, kick, warn, mute, nick, clearmessages",
-            "norwegian": "Moderasjons systemet inneholder grunnleggende kommandoer som: ban, kick, warn, mute, nick, clearmessages"
+            "norwegian": "Moderasjons systemet inneholder grunnleggende kommandoer som: ban, kick, warn, mute, nick, clearmessages",
+            "french": "Le système de modération contient des commandes de modération de base telles que"
         },
         "ANTIJOIN_SYSTEM": {
             "english": "The Antijoin system automatically kicks every user that tries to join your server in case of a server raid.",
             "german": "Das Antijoin system verhindert benutzer ihren server zu joinen.",
-            "norwegian": "Antijoin systemet hindrer brukere å joine din server i tilfelle raid."
+            "norwegian": "Antijoin systemet hindrer brukere å joine din server i tilfelle raid.",
+            "french": "Le système Antijoin kicke automatiquement chaque utilisateur qui essaie de rejoindre votre serveur en cas de raid de serveur"
         },
         "WELCOME_SYSTEM": {
             "english": "The Welcome system greets every user that joins your server",
-            "german": "Diese funktion begrüsst jeden der deinen Server reinkommt ",
-            "norwegian": "Denne funksjonen hilser hver bruker når den joiner serveren din"
+            "german": "Diese funktion begrüsst jeden der deinen Server reinkommt",
+            "norwegian": "Denne funksjonen hilser hver bruker når den joiner serveren din",
+            "french": "Le système de bienvenue accueille chaque utilisateur qui rejoint votre serveur"
         },
         "RULE_ADDPROVIDE": {
             "english": "You must provide a rule",
             "german": "Sie mussen eine regel eingeben",
-            "norwegian": "Du må oppgi en regel"
+            "norwegian": "Du må oppgi en regel",
+            "french": "Vous devez fournir une règle"
         },
         "RULE_ADD": {
             "english": "Added a new rule",
             "german": "Habe eine neue regel hinzugefügt",
-            "norwegian": "La til en ny regel"
+            "norwegian": "La til en ny regel",
+            "french": "Ajout d'une nouvelle règle"
         },
         "INFO_RULETXT": {
             "english": "These are the rules",
             "german": "Dies sind die Regeln",
-            "norwegian": "Dette er reglene"
+            "norwegian": "Dette er reglene",
+            "french": "Ce sont les règles"
         },
         "INFO_NOCHANNEL": {
             "english": "No info/rules channel set. -setinfo",
             "german": "Konnte keinen info/regel channel finden",
-            "norwegian": "Kunne ikke finne en info/regel kanal"
-        },
-        "VC_NONAME": {
-            "english": "Please specify the name for the voicechannel",
-            "german": "Bitte geben Sie den namen für den kanal ein",
-            "norwegian": "Vennligst oppgi navnet til kanalen"
-        },
-        "GUILD_RULES": {
-            "english": "These are the rules",
-            "german": ".",
-            "norwegian": "."
+            "norwegian": "Kunne ikke finne en info/regel kanal",
+            "french": "Aucun canal d'informations/règles défini. -setinfo"
         },
         "ECONOMY_PAYVERIFICARTION": {
             "english": "Are you sure you want to pay",
             "german": "Bitte bestätigen Sie die transaktion",
-            "norwegian": "Er du sikker på at du vil betale"
+            "norwegian": "Er du sikker på at du vil betale",
+            "french": "Êtes-vous sûr de vouloir payer"
         },
         "ECONOMY_PAYCANCELLED": {
             "english": "Transaction cancelled",
             "german": "Transaktion wurde kanseliert",
-            "norwegian": "Overføringen ble kansellert"
+            "norwegian": "Overføringen ble kansellert",
+            "french": "Transaction annulée"
         },
         "ECONOMY_RESET": {
             "english": "Are you sure you want to reset the whole economy? (All economy data will be gone)",
             "german": "Sind Sie sich sicher? (Alle economy daten werden gelöscht)",
-            "norwegian": "Er du sikker på at du vil slette alle økonomi dataene? (Alle økonomidataene vil bli borte)"
+            "norwegian": "Er du sikker på at du vil slette alle økonomi dataene? (Alle økonomidataene vil bli borte)",
+            "french": "Êtes-vous sûr de vouloir réinitialiser l'ensemble de l'économie ? (Toutes les données économiques disparaîtront)"
         },
         "RESET_CANCELLED": {
             "english": "Reset interrupted",
             "german": "Der reset wurde abgebrochen",
-            "norwegian": "Reseten ble avbrutt"
+            "norwegian": "Reseten ble avbrutt",
+            "french": "Réinitialisation interrompue"
         },
         "ECONOMY_RESETSUCCESS": {
-            "english": "Economy sucessfully reset",
+            "english": "Economy successfully reset",
             "german": "Economy wurde erfolgreich zurückgestellt",
-            "norwegian": "Økonomi ble tilbakestilt"
+            "norwegian": "Økonomi ble tilbakestilt",
+            "french": "Économie réinitialisée avec succès"
         },
         "SHOP_CREATE": {
             "english": "Shop successfully created",
             "german": "Shop erfolgreich errichtet",
-            "norwegian": "Butikk ble opprettet"
+            "norwegian": "Butikk ble opprettet",
+            "french": "Boutique créée avec succès"
         },
         "TIMEPLAN_SWITCH": {
             "english": "Switch Page",
             "german": "Seite tauschen",
-            "norwegian": "Bytt side"
+            "norwegian": "Bytt side",
+            "french": "Changer de page"
         },
         "SERVER_INVITE": {
             "english": "Invite link for",
@@ -886,6 +914,12 @@
             "german": "Hier finden sie einige Informationen zum Server",
             "norwegian": "Her er litt informasjon om serveren",
             "french": "Voici quelques informations sur le serveur"
+        },
+        "INFO_SET": {
+            "english": "Information channel set",
+            "german": "Informationskanal eingestellt",
+            "norwegian": "Informasjonskanel er satt",
+            "french": "Ensemble de canaux d'information"
         },
         "TEMPLATE": {
             "english": ".",

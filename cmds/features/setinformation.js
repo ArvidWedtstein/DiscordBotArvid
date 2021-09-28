@@ -7,7 +7,8 @@ const { MessageMentions } = require('discord.js')
 const tempMsg = require('../misc/temporary-message')
 const cache = new Map()
 const rulesSchema = require('../../schemas/rules-schema')
-const commandStats = require('../../Stats/commandStats')
+const commandStats = require('../../Stats/commandStats');
+const { info } = require('console');
 
 
 
@@ -49,13 +50,14 @@ module.exports = class SetInformationCommand extends Commando.Command {
         const guildId = guild.id
         commandStats.cmdUse(guildId, 'setinformation')
         if (!args) {
-            message.reply('Set information message "<info title> - <info description>"')
+            tempMsg(message.channel, 'Set information message "<info title> - <info description>"', 10);
         }
         let verifyrole = message.mentions.roles.first();  
         if (!verifyrole) {
             verifyrole = '';
         }
         let argsWithoutMentions = args.filter(arg => !Discord.MessageMentions.ROLES_PATTERN.test(arg));
+        
         let result = await rulesSchema.findOneAndUpdate({
             guildId: guild.id
         }, {
@@ -76,7 +78,13 @@ module.exports = class SetInformationCommand extends Commando.Command {
         }
         cache.set(guild.id, channel.id)
 
-        tempMsg(message.channel, `Information channel set!`, 10)
+        let infoembed = new Discord.MessageEmbed()
+            .setAuthor(this.client.user.username, this.client.user.displayAvatarURL())
+            .setColor(config.botEmbedHex)
+            .setTitle(`${language(guild, 'INFO_SET')}`)
+            .setTimestamp()
+
+        tempMsg(message.channel, infoembed, 10);
 
     }
 }

@@ -6,6 +6,7 @@ const settings = require('../features/setting');
 const commandStats = require('../../Stats/commandStats')
 const { MessageMenuOption, MessageMenu } = require('discord-buttons');
 const boticons = require('../reaction/boticons');
+const temporaryMessage = require('../misc/temporary-message');
 const reasons = {
     SPAMMING: 1,
     ADVERISING: 6,
@@ -122,7 +123,7 @@ module.exports = class MuteCommand extends Commando.Command {
                     }   
             
                     validReasons = validReasons.substr(0, validReasons.length - 2)
-                    message.reply(`${language(guild, 'MUTE_UNKNOWNREASON')} ${validReasons}`)
+                    temporaryMessage(message.channel, `${language(guild, 'MUTE_UNKNOWNREASON')} ${validReasons}`, 10);
                     return
                 }
             }
