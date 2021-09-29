@@ -1,6 +1,6 @@
 
 
-![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=M)![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=E)![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=M)![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=E)![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=B)![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=O)![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=T)
+![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=M)![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=E)![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=M)![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=E)![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=B)![#ff0000](https://via.placeholder.com/15/1589F0/000000?text=O)![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=T)
 <h1 align="center"><strong>MemeBot</strong></h1>
 
 * [Description](#description)
