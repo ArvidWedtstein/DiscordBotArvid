@@ -1,4 +1,9 @@
-
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 ![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=M)![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=E)![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=M)![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=E)![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=B)![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=O)![#1589F0](https://via.placeholder.com/15/1589F0/000000?text=T)
 <h1 align="center"><strong>MemeBot</strong></h1>
@@ -9,15 +14,13 @@
 
 
 ## Description
-<h3 align="center">Description</h3> 
+
+<p align="left">Just another completely normal discordbot</p>
 
 
-<p align="center">Just another completely normal discordbot</p>
+<h3 align="left"><strong> What did i learn?</strong></h3>
 
-
-<h3 align="center"><strong>What did i learn?</strong></h3>
-
-<p align="center">In this project i learned how to use node.js, discord.js and javascript</p>
+<p align="left">In this project i learned how to use node.js, discord.js and javascript</p>
 
 ## Features
 <h2 align="center"><strong>Features</strong></h2>
