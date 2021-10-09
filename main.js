@@ -189,6 +189,9 @@ client.on('ready', async () => {
     serverboost(client);
 
 
+    // Twitch test
+    twitch(client);
+
     // Voice Channel Activity
     //voiceactivity(client);
 
@@ -261,7 +264,7 @@ const arkraidalert = require('./events/ArkRaidAlert')
 const timesystem = require('./Stats/currentTime');
 const voiceactivity = require('./Stats/voicechannelLog');
 const { loadColors } = require('./cmds/icon/icon');
-
+const twitch = require('./cmds/test/twitch');
 
 
 

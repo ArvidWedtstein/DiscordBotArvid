@@ -4,9 +4,11 @@ module.exports = async (client) => {
     const channel = guild.channels.cache.get('892323762110869524');
     setInterval(() =>{
         statusCommand();
-    }, 60 * 1000);
-
+    }, 5 * 60 * 1000);
+    statusCommand();
     function statusCommand() { // Handle status command
+        let vert = '│'
+        //console.log(`${vert}    Checking Skoletime     ${vert}`)
         const timer = {
             "Monday": [
                 { "fag": "Samfunnsfag", "start": "0805", "slutt": "0850" },
@@ -88,12 +90,15 @@ module.exports = async (client) => {
         
         let tid = d.toLocaleTimeString()
         tid = tid.slice(0, tid.length-3).replace(':', '');
-        
+        if (timer[nameOfDay] < 1) return;
+        if (!timer[nameOfDay]) return;
         for (let i = 0; i < timer[nameOfDay].length; i++) {
             if (tid >= timer[nameOfDay][i].start && tid <= timer[nameOfDay][i].slutt) {
                 channel.setName(`Skoletime: ${timer[nameOfDay][i].fag}`);
             } else if (tid >= timer[nameOfDay][i].slutt && tid <= timer[nameOfDay][i+1].start) {
                 channel.setName(`Skoletime: Friminutt`);
+            } else if (tid <= timer[nameOfDay][0].start) {
+                channel.setName(`Skoletime: Fri`);
             }
         }
         
