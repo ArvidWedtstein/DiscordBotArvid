@@ -20,11 +20,15 @@ module.exports = async (client) => {
                         IsLiveMemory = true;
                         twitchloop = false;
                     }
-                    ChannelAnnounceLive.setName(`Brawlhalla: ${IsLiveMemory === true ? 'Live' : 'not live'}`);
+                    
                 } else {
                     IsLiveMemory = false;
                 }
-            } 
+                ChannelAnnounceLive.setName(`Brawlhalla: ${IsLiveMemory === true ? 'Live' : 'not live'}`);
+            } else {
+                IsLiveMemory = false;
+                ChannelAnnounceLive.setName(`Brawlhalla: ${IsLiveMemory === true ? 'Live' : 'not live'}`);
+            }
             
         })
     }

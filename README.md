@@ -66,11 +66,7 @@
 <h4 align="center"><b>Profile</b></h4>
      
 <h6 align="center">The profile command gives you unique informatin about your time in the server, your warns, your balance, xp and birthday</h6>
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 62e6eb0e054a244e3c4b8e3e0167c50c713738d9
 
 
 <h4 align="center"><b>Birthday System</b></h4>
@@ -78,22 +74,10 @@
 <h6 align="center">The birthday system lets you specify your birthday with the command "-setbirthday <date>"<br>The system will then congratulate you on your birthday.</h6>
 
 
-<<<<<<< HEAD
 <h4 align="center"><b>Message log</b></h4>
-=======
-<h4 align="center"><b>Birthday System</b></h4>
-   
-<h6 align="center">The birthday system lets you specify your birthday with the command "-setbirthday <date>"<br>The system will then congratulate you on your birthday.</h6>
->>>>>>> 62e6eb0e054a244e3c4b8e3e0167c50c713738d9
 
 <h6 align="center">This system logs every single message. This way you can have completly control over what your members are writing</h6>
 
-<<<<<<< HEAD
 <h4 align="center"><b>Dynamic Help command</b></h4>
 
 <h6 align="center">This command automatically displays an explanation for your commands</h6>
-=======
-<h4 align="center"><b>Message log</b></h4>
-
-<h6 align="center">This system logs every single message. This way you can have completly control over what your members are writing</h6>
->>>>>>> 62e6eb0e054a244e3c4b8e3e0167c50c713738d9
