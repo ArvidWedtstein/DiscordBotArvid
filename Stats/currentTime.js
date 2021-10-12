@@ -95,7 +95,7 @@ module.exports = async (client) => {
         for (let i = 0; i < timer[nameOfDay].length; i++) {
             if (tid >= timer[nameOfDay][i].start && tid <= timer[nameOfDay][i].slutt) {
                 channel.setName(`Skoletime: ${timer[nameOfDay][i].fag}`);
-            } else if (tid >= timer[nameOfDay][i].slutt && tid <= timer[nameOfDay][i+1].start) {
+            } else if (tid >= timer[nameOfDay][i].slutt && tid <= timer[nameOfDay][i+1]?.start) {
                 channel.setName(`Skoletime: Friminutt`);
             } else if (tid <= timer[nameOfDay][0].start) {
                 channel.setName(`Skoletime: Fri`);
