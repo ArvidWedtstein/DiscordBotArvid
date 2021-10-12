@@ -90,8 +90,14 @@ module.exports = async (client) => {
         
         let tid = d.toLocaleTimeString()
         tid = tid.slice(0, tid.length-3).replace(':', '');
-        if (timer[nameOfDay] < 1) return;
-        if (!timer[nameOfDay]) return;
+        if (timer[nameOfDay] < 1) {
+            channel.setName(`Skoletime: Fri`);
+            return;
+        }
+        if (!timer[nameOfDay]) {
+            channel.setName(`Skoletime: Fri`);
+            return;
+        }
         for (let i = 0; i < timer[nameOfDay].length; i++) {
             if (tid >= timer[nameOfDay][i].start && tid <= timer[nameOfDay][i].slutt) {
                 channel.setName(`Skoletime: ${timer[nameOfDay][i].fag}`);
