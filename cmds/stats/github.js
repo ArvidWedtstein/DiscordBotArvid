@@ -7,6 +7,7 @@ const config = require('../../config.json');
 const tempMsg = require('../misc/temporary-message');
 const boticons = require('../reaction/boticons');
 const commandStats = require('../../Stats/commandStats');
+const moment = require('moment');
 const { Octokit } = require("@octokit/core");
 module.exports = class Command extends Commando.Command {
     constructor(client) {
@@ -28,7 +29,8 @@ module.exports = class Command extends Commando.Command {
                 'VIEW_CHANNEL'
             ],
             guildOnly: true,
-            guarded: false
+            guarded: false,
+            format: 'github <git username> <repository name>'
         })
     }
     async run(message, args) {
@@ -36,10 +38,10 @@ module.exports = class Command extends Commando.Command {
         const guildId = guild.id;
         commandStats.cmdUse(guildId, `${this.name}`);
         const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-    
+        
         const response = await octokit.request("GET /repos/{owner}/{repo}", {
-            owner: "ArvidWedtstein",
-            repo: "ScreenMessageSolution",
+            owner: args[0],
+            repo: args[1],
         });
         console.log(response.data);
 
@@ -48,7 +50,7 @@ module.exports = class Command extends Commando.Command {
             .setTitle(`${response.data.full_name}`)
             .setURL(`${response.data.html_url}`)
             .setDescription(`${response.data.description}`)
-            .addField(`Created at:`, `${response.data.created_at}`)
+            .addField(`Created at:`, `${moment(response.data.created_at).format('DD.MM.YY - hh:mm:ss')}`)
             .addField(`Language: `, `${response.data.language}`)
             .addField(`Subscribtions: `, `${response.data.subscribers_count}`)
         if (response.data.open_issues >= 1) {
