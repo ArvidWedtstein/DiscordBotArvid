@@ -39,6 +39,12 @@ module.exports = class Command extends Commando.Command {
         commandStats.cmdUse(guildId, `${this.name}`);
         const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
         
+        if (!args[0]) {
+            return tempMsg(message.channel, `enter repository owner`)
+        }
+        if (!args[1]) {
+            return tempMsg(message.channel, `enter repository name`)
+        }
         const response = await octokit.request("GET /repos/{owner}/{repo}", {
             owner: args[0],
             repo: args[1],

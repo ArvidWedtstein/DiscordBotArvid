@@ -921,6 +921,12 @@
             "norwegian": "Informasjonskanel er satt",
             "french": "Ensemble de canaux d'information"
         },
+        "CURRENT_WEEK": {
+            "english": "current week",
+            "german": "aktuelle Woche",
+            "norwegian": "nåværende uke",
+            "french": "cette semaine"
+        },
         "TEMPLATE": {
             "english": ".",
             "german": ".",
