@@ -41,7 +41,7 @@ module.exports = class BanCommand extends Commando.Command {
         if (setting == false) {
             message.reply(`${language(guild, 'SETTING_OFF')} Moderation ${language(guild, 'SETTING_OFF2')}`);
             return
-        } else if (setting == true) {
+        } else if (!setting != !false) {
             const target = message.mentions.users.first();
             if (target) {
                 const targetMember = message.guild.members.cache.get(target.id);

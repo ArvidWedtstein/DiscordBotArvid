@@ -82,7 +82,7 @@ module.exports = class SteamCommand extends Commando.Command {
                 if (res.data.response.players[0].gameextrainfo) {
                     desc += `**Currently Playing**: ${res.data.response.players[0].gameextrainfo}\n`
                 }
-                desc += `**Steam ID**: ${res.data.response.players[0].steamid}`
+                desc += `**Steam ID**: ${res.data.response.players[0].steamid}\n`
                 desc += `**Country**: ${res.data.response.players[0].loccountrycode}`
                 embed.setDescription(desc)
             channel.send(embed)
