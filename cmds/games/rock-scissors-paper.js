@@ -9,12 +9,12 @@ module.exports = class FastTypeCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name: 'rock',
-            aliases: ['paper', 'scissors'],
+            aliases: ['paper', 'scissors', 'rps'],
             group: 'games',
             memberName: 'rockpaperscissors',
             description: 'starts a rock-paper-scissors game',
             guildOnly: true,
-            userPermissions: ['SEND_TTS_MESSAGES'],
+            userPermissions: ['SEND_MESSAGES'],
         })
     }
 

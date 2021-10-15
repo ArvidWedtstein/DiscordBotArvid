@@ -158,7 +158,7 @@ module.exports = class FastTypeCommand extends Commando.Command {
         
             if (game && game.currentWord && !member.user.bot && game.shuffledWord) {
                 //console.log('GAME')
-                message.delete()
+                //message.delete()
 
         
                 if (game.stage === 'IN_GAME' && content.toLowerCase() === game.currentWord.toLowerCase()) {
