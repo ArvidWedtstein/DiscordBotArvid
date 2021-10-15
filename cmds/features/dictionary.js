@@ -50,13 +50,15 @@ module.exports = class DictionaryCommand extends Commando.Command {
                     if (res.data[i].origin) {
                         embed.addField(`Origin:`, `${res.data[i].origin}`)
                     }
-                    
                 channel.send(embed);
             }
-            
             //console.log(res.data[0].meanings[0]);
         }).catch((err) => {
-            console.error('Err:', err);
+            const errorembed = new Discord.MessageEmbed()
+                .setTitle(err.response.data.title)
+                .setDescription(`${err.response.data.message}\n\n${err.response.data.resolution}`)
+            tempMsg(channel, errorembed, 10);
+            //console.error('Err:', err);
         })
     }
 }
