@@ -105,7 +105,7 @@ module.exports = class PythonCommand extends Commando.Command {
             });
     
     
-            client.on('messageReactionRemove', async (reaction, user) => {
+            this.client.on('messageReactionRemove', async (reaction, user) => {
                 if (reaction.message.partial) await reaction.message.fetch();
                 if (reaction.partial) await reaction.fetch();
                 if (user.bot) return;

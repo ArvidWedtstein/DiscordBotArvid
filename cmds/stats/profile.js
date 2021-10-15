@@ -84,10 +84,14 @@ module.exports = class ProfileCommand extends Commando.Command {
             birthday = 'Unknown'
         } else {
             birthday = birthdayresult.birthday;
-            joinedDate = birthdayresult.joinedDate;
+            joinedDate = userrole.joinedAt;
         }
-        
-        if (!results) {
+        let warntxt = '';
+        const results = await profileSchema.findOne({
+            userId,
+            guildId
+        })
+        if (!results.warnings) {
             warntxt += 'No warns'
         } else {    
             //.addField(`Warned By ${author} for "${reason}"`, `on ${new Date(timestamp).toLocaleDateString()}`)

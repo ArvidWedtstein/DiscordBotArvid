@@ -6,7 +6,7 @@ const settings = require('../features/setting')
 const Commando = require('discord.js-commando')
 const config = require('../../config.json')
 const commandStats = require('../../Stats/commandStats');
-
+const settingsSchema = require('../../schemas/settings-schema')
 
 module.exports = class WarnCommand extends Commando.Command {
     constructor(client) {

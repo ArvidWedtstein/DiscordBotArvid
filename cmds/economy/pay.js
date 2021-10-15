@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const config = require('../../config.json')
 const language = require('../language/language')
 const Commando = require('discord.js-commando')
+const settings = require('../features/setting')
 const commandStats = require('../../Stats/commandStats')
 module.exports = class PayCommand extends Commando.Command {
     constructor(client) {
@@ -13,7 +14,7 @@ module.exports = class PayCommand extends Commando.Command {
             memberName: 'pay',
             description: 'pay someone erlingcoins',
             guildOnly: true,
-            userPermissions: ['SEND_TTS_MESSAGES'],
+            userPermissions: ['SEND_MESSAGES'],
             argsType: 'multiple',
             clientPermissions: [
                 'SEND_MESSAGES',
@@ -43,7 +44,10 @@ module.exports = class PayCommand extends Commando.Command {
                 message.reply(`${language(guild, 'VALID_USER')}`)
                 return
             }
-    
+            if (target.id == message.author.id) {
+                message.reply(`${language(guild, 'VALID_USER')}`)
+                return
+            }
             const coinsToGive = args[1]
             if (isNaN(coinsToGive)) {
                 message.reply(`${language(guild, 'ECONOMY_VALID')}`)

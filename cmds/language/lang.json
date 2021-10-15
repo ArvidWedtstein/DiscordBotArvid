@@ -927,6 +927,12 @@
             "norwegian": "nåværende uke",
             "french": "cette semaine"
         },
+        "ECONOMY_PAYVERIFICATION": {
+            "english": "Du you want to give",
+            "german": "Wollen sie geben",
+            "norwegian": "Vil du gi",
+            "french": "."
+        },
         "TEMPLATE": {
             "english": ".",
             "german": ".",
