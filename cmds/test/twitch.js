@@ -27,7 +27,7 @@ module.exports = async (client) => {
                                     .setTitle(`${r.title}`)
                                     .setAuthor(`Brawlhalla is now streaming live!`)
                                     .setDescription(`Viewers: ${r.viewer_count}`)
-                                    .setThumbnail(r.getThumbnailUrl(500, 500))
+                                    .setThumbnail(r.getThumbnailUrl({width: 500, height: 500}))
                                 user.send(embed)
                             }
                         }
