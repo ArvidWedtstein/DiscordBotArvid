@@ -20,6 +20,16 @@ module.exports = async (client) => {
                             open('https://www.twitch.tv/brawlhalla');
                             IsLiveMemory = true;
                             twitchloop = false;
+                            const notificationusers = ['271288025428918274', '320137922370338818']
+                            for (let i = 0; i < notificationusers.length; i++) {
+                                let user = ThisGuildOnly.members.cache.get(notificationusers[i]);
+                                let embed = new Discord.MessageEmbed()
+                                    .setTitle(`${r.title}`)
+                                    .setAuthor(`Brawlhalla is now streaming live!`)
+                                    .setDescription(`Viewers: ${r.viewer_count}`)
+                                    .setThumbnail(r.getThumbnailUrl(500, 500))
+                                user.send(embed)
+                            }
                         }
                         
                     } else {
