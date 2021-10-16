@@ -4,6 +4,7 @@ const { MongoClient } = require('mongodb');
 const MongoDBProvider = require('commando-provider-mongo').MongoDBProvider;
 const fs = require('fs');
 const config = require("./config.json");
+const package = require('./package-lock.json');    
 const path = require('path');
 const mongo = require('./mongo');
 const c = require('ansi-colors');
@@ -53,7 +54,19 @@ client.setProvider(
     }) 
 )
 
-
+const updateConfig = async () => {
+    let txt = '';
+    fs.readFile('./config.json', 'utf8', function(err, data){
+      
+        data = data.replace(config.version, package.version);
+        fs.writeFile('./config.json', data, 'utf8', function (err) {
+            if (err) {
+                return console.log(err);
+            }
+        }); 
+    });
+      
+}   
 
 module.exports = client;
 
@@ -61,7 +74,8 @@ module.exports = client;
 client.on('ready', async () => {
     
     console.log(`${lineupper}\n${vert} ${initsuccess} ${vert}\n${linelower2}`)
-
+    console.log(`${vert}       Version: ${package.version}      ${vert}\n${linelower2}`)
+    updateConfig();
     //Set Activity
     client.user.setActivity({
         name: "YOU",
