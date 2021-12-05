@@ -9,6 +9,9 @@
     "type": "git",
     "url": "git+https://github.com/ArvidWedtstein/DiscordBotArvid.git"
   },
+  "scripts": {
+    "start": "node main.js"
+  },
   "dependencies": {
     "@discordjs/builders": "^0.6.0",
     "@discordjs/rest": "0.1.0-canary.0",
