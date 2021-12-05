@@ -115,7 +115,7 @@ module.exports = class HelpCommand extends Commando.Command {
         let embed = new Discord.MessageEmbed()
             .setColor(color)
             .setTitle(`${getEmoji("help")} ${emojiCharacters.squareleft}${language(guild, 'HELP_TITLE')}${emojiCharacters.squareright}`)
-            .setDescription(`${boticons(this.client, 'ticket')}${language(guild, 'HELP_TICKET')} `)
+            .setDescription(`${boticons(this.client, 'ticket')}${language(guild, 'HELP_TICKET')}\n[Invite](https://discord.com/api/oauth2/authorize?client_id=787324889634963486&permissions=0&redirect_uri=https%3A%2F%2Fdiscordapp.com%2Foauth2%2Fauthorize%3F%26client_id%3D787324889634963486%26scope%3Dbot&response_type=code&scope=identify%20email%20connections%20guilds%20guilds.join%20gdm.join%20rpc%20rpc.notifications.read%20applications.builds.upload%20messages.read%20webhook.incoming%20bot%20rpc.activities.write%20rpc.voice.write%20rpc.voice.read%20applications.builds.read%20applications.commands%20applications.store.update%20applications.entitlements%20activities.read%20activities.write%20relationships.read)`)
             .setFooter(`${language(guild, 'HELP_PAGE')} - 0/${categories.length}`)
             .addFields(
                 {name: '__**' + 0 + '**__', value: 'This page', inline: true},
