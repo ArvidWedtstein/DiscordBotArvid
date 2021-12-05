@@ -2,14 +2,18 @@ const fs = require('fs');
 const { MessageAttachment } = require('discord.js')
 const Discord = require('discord.js');
 const config = require('../../config.json')
-const Canvas = require("canvas")
+//const Canvas = require("canvas")
 const path = require('path')
 const language = require('../language/language')
 module.exports = async (client) => {
     
     client.on('guildCreate', async (guild) => { 
         const channel = guild.channels.cache.find(channel => channel.type === 'text' && channel.permissionsFor(guild.me).has('SEND_MESSAGES'))
-        const canvas = Canvas.createCanvas(400, 500)
+        
+
+        channel.send(`Thanks for adding me to your server!`)
+        
+        /*const canvas = Canvas.createCanvas(400, 500)
         const ctx = canvas.getContext('2d');
 
         const background = await Canvas.loadImage(
@@ -68,7 +72,7 @@ module.exports = async (client) => {
 
         ctx.drawImage(pfp, x + 20, y + 90, 100, 100);
         const attachment = new MessageAttachment(canvas.toBuffer())
-        channel.send(`** **`, attachment)
+        channel.send(`** **`, attachment)*/
     });
     
 }

@@ -1,4 +1,4 @@
-const Canvas = require("canvas")
+//const Canvas = require("canvas")
 const { MessageAttachment } = require('discord.js')
 const path = require('path')
 const { getChannelId } = require('./setwelcome')
@@ -39,8 +39,9 @@ module.exports = (client) => {
             }).catch((err) => {
                 console.log(c.red(err))
             })
+            channel.send(`${language(guild, 'WELCOME')} ${member.user.tag}\n${language(guild, 'WELCOME_RULES')}`)
             //const canvas = Canvas.createCanvas(800, 500)
-            const canvas = Canvas.createCanvas(400, 500)
+            /*const canvas = Canvas.createCanvas(400, 500)
             const ctx = canvas.getContext('2d');
 
             const background = await Canvas.loadImage(
@@ -105,7 +106,7 @@ module.exports = (client) => {
             ctx.drawImage(pfp, x + 20, y + 90, 100, 100);
             const timeusedtosend = `${(Date.now() - date1) / 1000}s`
             const attachment = new MessageAttachment(canvas.toBuffer())
-            channel.send(`** **`, attachment)
+            channel.send(`** **`, attachment)*/
         }
     })
 }

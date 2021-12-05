@@ -2,7 +2,7 @@ const levelsys = require('../../levels');
 const Discord = require('discord.js');
 const language = require('../language/language')
 const Commando = require('discord.js-commando')
-const Canvas = require('canvas')
+//const Canvas = require('canvas')
 const path = require('path')
 const commandStats = require('../../Stats/commandStats')
 module.exports = class LevelCommand extends Commando.Command {
@@ -44,8 +44,8 @@ module.exports = class LevelCommand extends Commando.Command {
         canvas.context.textAlign = 'center',
         canvas.context.fillText(level, 512, 410)
         */
-       let background;
-        const canvas = Canvas.createCanvas(700, 250)
+        let background;
+        /*const canvas = Canvas.createCanvas(700, 250)
         const ctx = canvas.getContext('2d');
         if (level == 200) {
             background = await Canvas.loadImage(
@@ -92,9 +92,9 @@ module.exports = class LevelCommand extends Commando.Command {
 
         ctx.drawImage(pfp, x, y - 0, 100, 100);
         const attachment = new Discord.MessageAttachment(canvas.toBuffer(), `lvl-${message.author}.png`);
-        message.channel.send('', attachment)
+        message.channel.send('', attachment)*/
 
-        /*const attachment = new Discord.MessageAttachment(`./img/ErlingMoney.png`, `ErlingMoney.png`);
+        const attachment = new Discord.MessageAttachment(`./img/ErlingMoney.png`, `ErlingMoney.png`);
         
 
         let embed = new Discord.MessageEmbed()
@@ -103,6 +103,6 @@ module.exports = class LevelCommand extends Commando.Command {
         .setDescription(`${message.author}, your level is **${level}**`)
         .attachFiles(attachment)
         .setThumbnail(`attachment://ErlingMoney.png`);
-        message.channel.send(embed)*/
+        message.channel.send(embed)
     }   
 }

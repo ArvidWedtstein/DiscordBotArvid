@@ -32,7 +32,6 @@
     "commando-provider-mongo": "^2.1.0",
     "discord-api-types": "^0.23.1",
     "discord-buttons": "^4.0.0",
-    "discord-canvas": "^1.4.1",
     "discord-quiz": "^1.0.4",
     "discord-rpc": "^4.0.1",
     "discord-together": "^1.1.53",
