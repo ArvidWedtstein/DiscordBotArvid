@@ -8,6 +8,6 @@ node_modules
 logs
 handler
 SlashCommands
-memes
+#memes
 node_modules
 .env
