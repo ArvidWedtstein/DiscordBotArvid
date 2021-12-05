@@ -22,7 +22,7 @@ module.exports = async (client) => {
                 return;
             }
             const dat = `${d.getDate()} ${d.getMonth()+1} ${d.getFullYear()}`; 
-            try {
+            /*try {
                 // try to read file
                 await fs.promises.readFile(`./logs/MessageLog/messageLog - ${dat}.txt`)
                 const text = fs.readFileSync(`./logs/MessageLog/messageLog - ${dat}.txt`).toString();
@@ -35,7 +35,7 @@ module.exports = async (client) => {
                 await fs.promises.writeFile(`./logs/MessageLog/messageLog - ${dat}.txt`, `${d.toLocaleTimeString()} § ${guild} § ${message.author.username}§ ${content}` + '\n', err => {
                     if (err) throw err;
                 });
-            }
+            }*/
         }
     })
 }

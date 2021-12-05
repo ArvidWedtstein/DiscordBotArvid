@@ -30,7 +30,9 @@ module.exports = class MessageLogCommand extends Commando.Command {
                 'READ_MESSAGE_HISTORY',
                 'VIEW_CHANNEL'
             ],
-            guildOnly: true
+            guildOnly: true,
+            hidden: true,
+            ownerOnly: true
         })
     }
 
