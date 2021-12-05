@@ -16,7 +16,7 @@ module.exports = class PingCommand extends Commando.Command {
     async run(message, args) {
         var d = new Date();
             let ping = `${Date.now() - message.createdTimestamp}`;
-            let botping = Math.round(client.ws.ping);
+            let botping = Math.round(this.client.ws.ping);
 
                 let embed = new Discord.MessageEmbed()
                 .setColor(`RANDOM`)
