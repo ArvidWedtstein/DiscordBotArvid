@@ -217,8 +217,8 @@ client.on('ready', async () => {
 
     // Slash-Command Handler
 
-    const baseFile = 'slash-commands.js'
-    const commandBase = require(`./SlashCommands/${baseFile}`)
+    //const baseFile = 'slash-commands.js'
+    //const commandBase = require(`./SlashCommands/${baseFile}`)
 
     /*const readCommands = dir => {
         const files = fs.readdirSync(path.join(__dirname, dir))
