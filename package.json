@@ -14,7 +14,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
-    "node": "16.x"
+    "node": "16.x",
+    "npm": "8.1.0"
   },
   "dependencies": {
     "@discordjs/builders": "^0.6.0",
@@ -25,7 +26,6 @@
     "ansi-colors": "^4.1.1",
     "axios": "^0.21.1",
     "canvacord": "^5.2.1",
-    "canvas": "^2.8.0",
     "chart": "^0.1.2",
     "cheerio": "^1.0.0-rc.10",
     "colors": "^1.4.0",
