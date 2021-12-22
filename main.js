@@ -35,7 +35,6 @@ dbs(client)
 let lineupper = `╭───────────────────────────╮`;
 let vert = '│'
 let linelower2 = '├───────────────────────────┤'
-let linelower = '╰───────────────────────────╯';
 const initfailed = `${c.white(`Meme Bot Status: ${c.redBright(`Failed ${c.symbols.cross}`)}`)}`;
 const initsuccess = `${c.white(`Meme Bot Status: ${c.greenBright(`Online ${c.symbols.check}`)}`)}`;
 // Database setup
