@@ -20,6 +20,10 @@
 ## Features
 <h2 align="center"><strong>Features</strong></h2>
 
+##
+Join this discord server to see the bot in action
+https://discord.gg/4Km3YdSjKX
+
 ```java
 - Soundboard
 - Level System
