@@ -19,7 +19,7 @@ module.exports = class HelpCommand extends Commando.Command {
             aliases: ['hilfe', 'hjelp', 'h', 'memehelp'],
             group: 'features',
             memberName: 'help',
-            description: `꧁༺get help about commandos༻꧂`,
+            description: `༺get help about commandos༻`,
             argsType: 'multiple',
             guildOnly: true,
             format: 'help',
