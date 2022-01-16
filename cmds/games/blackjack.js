@@ -55,7 +55,7 @@ module.exports = class HelpCommand extends Commando.Command {
         var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
 
         var deck = new Array();
-        
+        var currentPlayer = 0;
         var rules = `Please decide what to do in the following 60 seconds or you will lose!
         🔴 Stand | not asking for more cards.
         🔵 Hit | get another card.
