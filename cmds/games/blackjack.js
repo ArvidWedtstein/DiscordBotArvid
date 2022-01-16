@@ -206,7 +206,7 @@ module.exports = class HelpCommand extends Commando.Command {
             updatePoints();
             check();
         }
-        function surrender() {
+        async function surrender() {
             const remainingCoins = await economy.addCoins(
                 guild.id,
                 member.id,
