@@ -278,7 +278,7 @@ const arkraidalert = require('./events/ArkRaidAlert')
 const timesystem = require('./Stats/currentTime');
 const voiceactivity = require('./Stats/voicechannelLog');
 const { loadColors } = require('./cmds/icon/icon');
-const twitch = require('./cmds/test/twitch');
+const twitch = require('./cmds/test/twitchbrawlhalla');
 
 
 

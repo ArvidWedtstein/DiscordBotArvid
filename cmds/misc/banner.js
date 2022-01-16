@@ -12,7 +12,9 @@ module.exports = class BannerCommand extends Commando.Command {
             memberName: 'banner',
             description: 'banner text',
             userPermissions: ['ADD_REACTIONS'],
-            argsType: 'multiple'
+            argsType: 'multiple',
+            ownerOnly: true,
+            hidden: true
         })
     }
 

@@ -37,6 +37,7 @@ module.exports = class CommandListCommand extends Commando.Command {
         this.client.registry.groups.forEach((e) => {
             e.commands.forEach((c) => {
                 if (c.hidden) return
+                if (c.ownerOnly) return
                 if (c.guarded) {
                     cmdstate.push({name: c.name, state: `${c.isEnabledIn(guild)} ${boticons(this.client, 'secure')}`})
                 } else {
@@ -47,6 +48,7 @@ module.exports = class CommandListCommand extends Commando.Command {
 
         let txt = 'Commands:\n\n'
         for (let command in cmdstate) {
+            txt += `**Command** | **Is Enabled**\n`
             txt += `${cmdstate[command].name}: ${cmdstate[command].state}\n`
         }
 
