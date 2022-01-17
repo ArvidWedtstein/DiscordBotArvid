@@ -11,7 +11,7 @@ module.exports = async (client) => {
                 list.members.cache.each(async member => {
                     const userId = member.user.id
                     const guild = member.guild;
-                    let news =  member.guild.channels.cache.find(channel => channel.name === 'nyheter');
+                    let news = member.guild.channels.cache.find(channel => channel.name === 'nyheter');
                     if (!news) {
                         const name = `${language(guild, 'NEWS_CHANNELNAME')}`
                             member.guild.channels
@@ -39,6 +39,7 @@ module.exports = async (client) => {
                         }
                         
                         if (results.birthday == birthday) {
+                            console.log('birthday')
                             let embedCom = new Discord.MessageEmbed()
                                 .setColor(config.botEmbedHex)
                                 .setTitle(`${boticons(client, 'firework')}${language(guild, 'BIRTHDAY_ANNOUNCEMENT')}!${boticons(client, 'firework')}`)
@@ -84,7 +85,7 @@ module.exports = async (client) => {
                             //console.log('No birthday')
                         }
                     }); 
-                setTimeout(checkForBirthday, 86400 * 1000 )
+                setTimeout(checkForBirthday, 43200 * 1000 )
         let lineupper = `╭───────────────────────────╮`;
         let vert = '│';
         let linelower2 = '├───────────────────────────┤';
