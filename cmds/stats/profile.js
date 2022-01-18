@@ -52,7 +52,6 @@ module.exports = class ProfileCommand extends Commando.Command {
 
     
         let xptonextlevel = ''
-        let currentlevel = '';
 
         function getLevel(test) {
             var n = test.split(" ")
