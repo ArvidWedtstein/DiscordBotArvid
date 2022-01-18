@@ -44,7 +44,7 @@ module.exports = class HelpCommand extends Commando.Command {
         const user = message.author;
         const gambleamount = args[0];
         const coinsOwned = await economy.getCoins(guild.id, user.id)
-        if (!args[0]) {
+        if (!args[0] || gambleamount) {
             return tempmsg(message.channel, 'Specify a amount to gamble for', 5);
         }
         if (coinsOwned < gambleamount) return tempmsg(message.channel, `You don't have that many erlingcoins.`, 5);
