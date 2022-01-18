@@ -2,7 +2,7 @@ const memberCounter = require('../../Stats/memberCounter');
 const language = require('../language/language')
 const fs = require('fs');
 const Discord = require('discord.js');
-const { MessageEmbed } = require('discord.js')
+const { MessageEmbed, ReactionCollector } = require('discord.js')
 const Commando = require('discord.js-commando')
 const economy = require('../../economy')
 const tempmsg = require('../misc/temporary-message');
@@ -44,7 +44,7 @@ module.exports = class HelpCommand extends Commando.Command {
         const user = message.author;
         const gambleamount = args[0];
         const coinsOwned = await economy.getCoins(guild.id, user.id)
-        if (!args[0] || gambleamount) {
+        if (!args[0] || !gambleamount || isNaN(gambleamount)) {
             return tempmsg(message.channel, 'Specify a amount to gamble for', 5);
         }
         if (coinsOwned < gambleamount) return tempmsg(message.channel, `You don't have that many erlingcoins.`, 5);
@@ -156,15 +156,14 @@ module.exports = class HelpCommand extends Commando.Command {
             
             txt += `\n${rules}`
             embed.setDescription(txt)
-            let messageEmbed = message.channel.send({ embeds: [embed]}).then((msg) => {
-                msg.react('🔴')
-                msg.react('🔵')
-                msg.react('⛔')
+            message.channel.send(embed).then(async (msg) => {
+                await msg.react('🔴')
+                await msg.react('🔵')
+                await msg.react('⛔')
                 const filter = (reaction, user) => {
-                    return user.id === message.author.id
+                    return user.id === message.author.id;
                 }
-                const collector = msg.createReactionCollector({
-                    filter,
+                const collector = await new ReactionCollector(msg, filter, {
                     max: 1,
                     time: 1000 * 60
                 })
@@ -187,7 +186,6 @@ module.exports = class HelpCommand extends Commando.Command {
                 })
             })
             
-
         }
         async function startBlackjack() {
             currentplayer = 0;
@@ -234,7 +232,7 @@ module.exports = class HelpCommand extends Commando.Command {
                     txt.push(``);
                 }
                 embed.setDescription(txt.join('\n'))
-                let messageEmbed = message.channel.send({ embeds: [embed]})
+                message.channel.send(embed)
                 // end(); 
             } else {
                 const embed = new MessageEmbed()
@@ -251,14 +249,13 @@ module.exports = class HelpCommand extends Commando.Command {
                 }   
                 txt += rules
                 embed.setDescription(txt)
-                let messageEmbed = message.channel.send({ embeds: [embed]}).then((msg) => {
-                    msg.react('🔴')
-                    msg.react('🔵')
+                message.channel.send(embed).then(async function (msg) {
+                    await msg.react('🔴')
+                    await msg.react('🔵')
                     const filter = (reaction, user) => {
-                        return user.id === message.author.id
+                        return user.id === message.author.id;
                     }
-                    const collector = msg.createReactionCollector({
-                        filter,
+                    const collector = await new ReactionCollector(msg, filter, {
                         max: 1,
                         time: 1000 * 60
                     })
@@ -321,7 +318,7 @@ module.exports = class HelpCommand extends Commando.Command {
             }
 
             embed.setDescription(txt.join('\n'))
-            messageEmbed = message.channel.send({ embeds: [embed]})
+            message.channel.send(embed)
 
         }
         startBlackjack();
