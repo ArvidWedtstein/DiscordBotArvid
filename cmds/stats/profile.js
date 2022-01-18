@@ -131,24 +131,20 @@ module.exports = class ProfileCommand extends Commando.Command {
         if (!txt) {
             txt += 'None'
         }
-        if (!presence) presence = "none";
-        if (!birthday) birthday = "none";
         let embed = new Discord.MessageEmbed()
             .setColor(color)
             .setAuthor(`${user.username}'s Profile`, `${user.displayAvatarURL({ dynamic: true})}`)
-            .addField('Birthday🎂: ', birthday, true)
             //.addField('Joined Discord: ', user.createdAt)
-            .addField(`ErlingCoin${Coins === 1 ? '' : 's'}${erlingcoin}: `, Coins)
-            .addField('Level:', userlevel, true)
-            .addField('XP: ', xp, true)
-            .addField('XP To Next Level: ', xptonextlevel - xp, true)
-            .addField("Messages Sent: ", messages)
-            .addField("Game: ", `${presence}`)
-            .addField("Warns: ", warntxt)
-            .addField("Has been in this server for: ", joinedDate)
-        if (txt) {
-            embed.addField("Badges: ", `${txt}`)
-        }
+        if (birthday) embed.addField('Birthday🎂: ', birthday, true)
+        if (Coins) embed.addField(`ErlingCoin${Coins === 1 ? '' : 's'}${erlingcoin}: `, Coins)
+        if (userlevel) embed.addField('Level:', userlevel, true)
+        if (xp) embed.addField('XP: ', xp, true)
+        if (xptonextlevel) embed.addField('XP To Next Level: ', xptonextlevel - xp, true)
+        if (messages) embed.addField("Messages Sent: ", messages)
+        if (txt) embed.addField("Badges: ", `${txt}`)
+        if (presence) embed.addField("Game: ", `${presence}`)
+        if (warntxt) embed.addField("Warns: ", warntxt)
+        if (joinedDate) embed.addField("Has been in this server for: ", joinedDate)
         
         
         //.addField("Roles" , rolemap)
