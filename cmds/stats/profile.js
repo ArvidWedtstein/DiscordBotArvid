@@ -131,6 +131,8 @@ module.exports = class ProfileCommand extends Commando.Command {
         if (!txt) {
             txt += 'None'
         }
+        if (!presence) presence = "none";
+        if (!birthday) birthday = "none";
         let embed = new Discord.MessageEmbed()
             .setColor(color)
             .setAuthor(`${user.username}'s Profile`, `${user.displayAvatarURL({ dynamic: true})}`)
@@ -141,11 +143,12 @@ module.exports = class ProfileCommand extends Commando.Command {
             .addField('XP: ', xp, true)
             .addField('XP To Next Level: ', xptonextlevel - xp, true)
             .addField("Messages Sent: ", messages)
-            .addField("Badges: ", `${txt}`)
             .addField("Game: ", `${presence}`)
             .addField("Warns: ", warntxt)
             .addField("Has been in this server for: ", joinedDate)
-
+        if (txt) {
+            embed.addField("Badges: ", `${txt}`)
+        }
         
         
         //.addField("Roles" , rolemap)
