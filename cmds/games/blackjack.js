@@ -43,7 +43,7 @@ module.exports = class HelpCommand extends Commando.Command {
         const { guild } = message
         const user = message.author;
         const gambleamount = args[0];
-        const coinsOwned = await economy.getCoins(guild.id, member.id)
+        const coinsOwned = await economy.getCoins(guild.id, user.id)
         if (!args[0]) {
             return tempmsg(message.channel, 'Specify a amount to gamble for', 5);
         }
