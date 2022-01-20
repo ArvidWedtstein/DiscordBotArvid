@@ -30,7 +30,7 @@ module.exports = async (client) => {
                                 .setImage(r.getThumbnailUrl({width: 800, height: 500}))
                             firstMessage(client, '899537119087853590', embed, reactions)
                             
-                            const notificationusers = ['271288025428918274', '320137922370338818']
+                            const notificationusers = ['271288025428918274', '320137922370338818', '224609169980915722']
                             for (let i = 0; i < notificationusers.length; i++) {
                                 let user = ThisGuildOnly.members.cache.get(notificationusers[i]);
                                 user.send(embed)
