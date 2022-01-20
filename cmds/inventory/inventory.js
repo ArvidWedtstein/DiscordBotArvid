@@ -12,7 +12,7 @@ module.exports.addItem = async (guildId, userId, itemname, amount) => {
             const item = {
                 name: itemname,
             }
-            for (i = 0; i < amount; i++) {
+            for (let i = 0; i < amount; i++) {
                 const result = await inventorySchema.findOneAndUpdate({
                     guildId,
                     userId,
