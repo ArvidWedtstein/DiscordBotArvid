@@ -22,7 +22,7 @@ module.exports = class BagCommand extends Commando.Command {
     }
 
     async run(message, args) {
-        // const date1 = Date.now();
+        // dconst date1 = Date.now();
         let count = {};
         const target = message.mentions.users.first() || message.author;
         const { guild } = message
