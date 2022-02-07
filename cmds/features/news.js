@@ -38,7 +38,7 @@ module.exports = class NewsCommand extends Commando.Command {
             // Get JSON data
             const json = JSON.parse(args.join(' '))
             //console.log(json)
-            const { text = ''} = json
+            // const { text = ''} = json
             console.log(json)
             targetChannel.send(text, {
                 embed: json,
