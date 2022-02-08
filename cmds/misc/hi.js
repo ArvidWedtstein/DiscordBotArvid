@@ -34,7 +34,13 @@ module.exports = class HiCommand extends Commando.Command {
             'Nice to see you',
             'Hello',
             'Hi',
-            'Guten tag,'
+            'Guten tag,',
+            'How are you?',
+            'How are you doing?',
+            'How have you been?',
+            'How’s your day going so far?',
+            'How’s it going?',
+            'How are things?',
         ]
         var randomAnswer = answers[Math.floor(Math.random() * answers.length)];
 
