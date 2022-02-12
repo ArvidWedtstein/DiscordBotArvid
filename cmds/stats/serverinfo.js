@@ -29,6 +29,7 @@ module.exports = class ServerInfoCommand extends Commando.Command {
         message.delete();
         const { guild } = message
         const { name, region, memberCount, owner, afkTimeout } = guild
+
         const icon = guild.iconURL()
         const splash = guild.splashURL()
         const banner = guild.bannerURL();

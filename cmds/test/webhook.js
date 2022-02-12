@@ -28,7 +28,7 @@ module.exports = class WebhookCommand extends Commando.Command {
             const webhooks = await channel.fetchWebhooks();
             const webhook = webhooks.first();
 
-            await webhook.send('', {
+            await webhook.send({
                 username: 'IG9TE',
                 avatarURL: 'https://cdn.discordapp.com/avatars/324179030247079937/177c034a8dea852f99db858463b81338.webp',
                 embeds: [json],

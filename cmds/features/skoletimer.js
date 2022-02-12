@@ -129,7 +129,7 @@ module.exports = class SkoleTimerCommand extends Commando.Command {
         
         let embed = new Discord.MessageEmbed()
             .setTitle('Timene dine idag')
-            .setDescription(`Du har nå: ${currenttime}`)
+            .setDescription(`Du har nå: ${cuttime}`)
         for (let i = 0; i < timer[nameOfDay].length; i++) {
             embed.addField(`${timer[nameOfDay][i].start} - ${timer[nameOfDay][i].slutt}`, `${timer[nameOfDay][i].fag}`)
         }
