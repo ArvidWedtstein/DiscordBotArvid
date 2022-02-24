@@ -79,7 +79,7 @@ module.exports = class EmoteCommand extends Commando.Command {
                             }
                         } else if (args[0] === 'gas') {
                             message.channel.bulkDelete(1);
-                        const member = message.mentions.users.first() || message.author; 
+                            const member = message.mentions.users.first() || message.author; 
                             if(member){
                                 const memberTarger = message.guild.members.cache.get(member.id);
                                 let embed = new Discord.MessageEmbed()
