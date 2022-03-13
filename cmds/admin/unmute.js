@@ -61,7 +61,6 @@ module.exports = class UnmuteCommand extends Commando.Command {
             })
             
             //console.log('RESULT:', result)
-    
             if (result.nModified === 1) {
                 // Remove Muted Role
                 const mutedRole = guild.roles.cache.find(role => {

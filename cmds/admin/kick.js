@@ -41,14 +41,6 @@ module.exports = class KickCommand extends Commando.Command {
                 if (reason.length > 1024) {
                     reason = reason.slice(0, 1021) + '...';
                 }
-
-
-
-                
-                //console.log(target.username + ' kick');
-                
-                
-
                 const targetMember = message.guild.members.cache.get(target.id);
                 let result = await settingsSchema.findOne({
                     guildId

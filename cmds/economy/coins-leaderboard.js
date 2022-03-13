@@ -41,7 +41,7 @@ const updateLeaderboard = async (client, message) => {
 const language = require('../language/language')
 const Commando = require('discord.js-commando')
 const commandStats = require('../../Stats/commandStats')
-module.exports = class KickCommand extends Commando.Command {
+module.exports = class CoinsLeaderboardCommand extends Commando.Command {
     constructor(client) {
         super(client, {
             name: 'leaderboard',
@@ -77,10 +77,5 @@ module.exports = class KickCommand extends Commando.Command {
             updateLeaderboard(this.client, message)
             commandStats.cmdUse(guildId, 'leaderboard')
         }
-        
-
-        //const coins = await economy.getCoins(guildId, targetId);
-
-        //message.reply(`You have ${coins} ErlingCoins!`) 
     }
 }

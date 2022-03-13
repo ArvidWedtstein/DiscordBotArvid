@@ -19,8 +19,7 @@ module.exports = class FastTypeCommand extends Commando.Command {
     }
 
     async run(message, args) {
-        const { channel } = message
-        const { guild } = message
+        const { channel, guild  } = message
         const emojis = ['✊', '🤚', '✌️']
         
         let embed = new Discord.MessageEmbed()

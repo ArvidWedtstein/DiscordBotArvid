@@ -116,42 +116,9 @@ module.exports = class TicTacToeCommand extends Commando.Command {
                         .setAuthor(`Turn: ${game.p2}`)
                         .setTitle(`Tic Tac Toe`)
                         .setDescription(`${msg}`)
-                        .setFooter('Write a number to mark your spot')
+                        .setFooter('Write a number to mark your spot or *end* to stop the game')
 
                     message.channel.send(embed2)
-                    /*const background = await Canvas.loadImage(
-                        path.join(__dirname, './image.png')
-                    )
-                    ctx.drawImage(background, x, y)
-
-                    const invslot = await Canvas.loadImage(
-                        path.join(__dirname, `../../img/ErlingMoney.png`)
-                    )
-                    let spot2 = spot
-                    let spot3 = spot
-                    let u = (canvas.width / 3) - 75
-                    let i = (canvas.height / 3) - 75
-                    if (spot < 4) {
-                        spot2 = 1
-                    } else if (spot > 3 && spot < 7) {
-                        spot2 = 2
-                    } else if (spot > 6 && spot < 10) {
-                        spot2 = 3
-                    }
-                    if (spot == 1 || spot == 4 || spot == 6) {
-                        spot3 = 1
-                    } else if (spot == 2 || spot == 5 || spot == 8) {
-                        spot3 = 2
-                    } else if (spot == 3 || spot == 6 || spot == 9) {
-                        spot3 = 3
-                    }
-                    ctx.drawImage(invslot, (spot3 * 100) - 75, (spot2 * 100) - 75, 50, 50);
-                    
-
-                    const attachment = new MessageAttachment(canvas.toBuffer(), 'test.png')
-                    const buffer = canvas.toBuffer('image/png')
-                    fs.writeFileSync('./cmds/games/image.png', buffer)
-                    message.channel.send(attachment)*/
                     
                     const remove = [`${transform[spot]}`]
                     console.log(remove)
@@ -173,39 +140,7 @@ module.exports = class TicTacToeCommand extends Commando.Command {
                         .setFooter('Write a number to mark your spot')
                     
                     message.channel.send(embed2)
-                    
-                    /*const background = await Canvas.loadImage(
-                        path.join(__dirname, './image.png')
-                    )
-                    ctx.drawImage(background, x, y)
-                    const invslot = await Canvas.loadImage(
-                        path.join(__dirname, `../../img/goldcoin.png`)
-                    )
-                    let spot2 = spot
-                    let spot3 = spot
-                    let u = (canvas.width / 3) - 75
-                    let i = (canvas.height / 3) - 75
-                    if (spot == 1 || spot == 2 || spot == 3) {
-                        spot2 = 1
-                    } else if (spot == 4 || spot == 5 || spot == 6) {
-                        spot2 = 2
-                    } else if (spot == 7 || spot == 8 || spot == 8) {
-                        spot2 = 3
-                    }
-                    if (spot == 1 || spot == 4 || spot == 6) {
-                        spot3 = 1
-                    } else if (spot == 2 || spot == 5 || spot == 8) {
-                        spot3 = 2
-                    } else if (spot == 3 || spot == 6 || spot == 9) {
-                        spot3 = 3
-                    }
-                    ctx.drawImage(invslot, (spot2 * 100) - 75, (spot3 * 100) - 75, 50, 50);
-                    
 
-                    const attachment = new MessageAttachment(canvas.toBuffer(), 'test.png')
-                    const buffer = canvas.toBuffer('image/png')
-                    fs.writeFileSync('./cmds/games/image.png', buffer)
-                    message.channel.send(attachment)*/
                     const remove = [`${transform[spot]}`]
                     console.log(remove)
                     game.spots = game.spots.filter(item => !remove.includes(item))
@@ -226,9 +161,6 @@ module.exports = class TicTacToeCommand extends Commando.Command {
         if (!p2) {
             return message.reply('Please specify your enemy')
         }
-        //const spots = [' 1   2   3 ', ' 4   5   6 ', ' 7   8   9 ']
-        //const spots = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
-        //const spots = ['1⃣', '2⃣', '3⃣', '4⃣', '5⃣', '6⃣', '7⃣', '8⃣', '9⃣']
         const spots = [':one:', ':two:', ':three:', ':four:', ':five:', ':six:', ':seven:', ':eight:', ':nine:']
 
         //msg = spots.join('\n')
@@ -254,7 +186,6 @@ module.exports = class TicTacToeCommand extends Commando.Command {
             p2,
             turn: p1
         }
-        console.log(games[channel.id].spots)
 
     }
 }
