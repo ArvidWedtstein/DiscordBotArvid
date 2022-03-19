@@ -55,7 +55,6 @@ module.exports = class BotInfoCommand extends Commando.Command {
             .setTitle(`${this.client.user.username}`)
             .setThumbnail(this.client.user.displayAvatarURL())
             .setColor(config.botEmbedHex)
-            //.setImage(banner)
             .addFields(
                 {
                     name: 'Creator',
