@@ -1,6 +1,5 @@
 
 
-![#FFFFFF](https://via.placeholder.com/15/000000/FFFFFF?text=M)![#FFFFFF](https://via.placeholder.com/15/000000/FFFFFF?text=E)![#FFFFFF](https://via.placeholder.com/15/000000/FFFFFF?text=M)![#FFFFFF](https://via.placeholder.com/15/000000/FFFFFF?text=E)![#1589F0](https://via.placeholder.com/15/000000/FFFFFF?text=B)![#FFFFFF](https://via.placeholder.com/15/000000/FFFFFF?text=O)![#FFFFFF](https://via.placeholder.com/15/000000/FFFFFF?text=T)
 <h1 align="center"><strong>MemeBot</strong></h1>
 
 * [Description](#description)
